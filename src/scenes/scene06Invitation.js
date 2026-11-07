@@ -27,16 +27,16 @@ export function initScene06() {
 
   timeline
     .fromTo(
-      '.invitation-solar-bloom',
-      { scale: 0.7, opacity: 0.3 },
-      { scale: 1.85, opacity: 0.9, ease: 'power2.out' },
+      '.invitation-sun-corona',
+      { scale: 0.7, opacity: 0.2 },
+      { scale: 1.6, opacity: 0.8, ease: 'power2.out' },
       0
     )
     .fromTo(
-      '.invitation-layout',
-      { y: 50, opacity: 0.5 },
+      '.editorial-story',
+      { y: 40, opacity: 0.6 },
       { y: 0, opacity: 1, ease: 'power1.out' },
-      0.2
+      0.15
     );
 }
 

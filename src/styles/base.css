@@ -1,5 +1,5 @@
 /* ==========================================================================
-   BASE RESETS & ACCESSIBILITY
+   BASE RESETS & EDITORIAL ACCESSIBILITY
    ========================================================================== */
 
 *, *::before, *::after {
@@ -22,40 +22,39 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   overflow-x: hidden;
-  background: radial-gradient(circle at 50% 20%, var(--bg-current-secondary) 0%, var(--bg-current-primary) 100%);
-  background-attachment: fixed;
-  transition: background-color 0.4s ease;
+  background-color: var(--bg-current-primary);
+  transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
-/* Accessibility: Visible Focus Rings */
+/* Accessibility: Subtle Focus Rings */
 :focus-visible {
   outline: 2px solid var(--accent-current-primary);
   outline-offset: 4px;
-  box-shadow: 0 0 10px var(--accent-current-primary);
 }
 
-/* Skip to Main Link */
+/* Skip Link */
 .skip-to-main {
   position: fixed;
   top: -100px;
   left: 1.5rem;
   background: var(--accent-current-primary);
   color: var(--color-ink-dark);
-  font-weight: 700;
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--radius-sm);
-  z-index: var(--z-overlay);
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 9999px;
+  z-index: var(--z-modal);
   transition: top 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: var(--text-sm);
 }
 
 .skip-to-main:focus {
-  top: 1.5rem;
+  top: 1.25rem;
 }
 
-/* Atmosphere full-page canvas */
+/* Background Atmosphere Canvas */
 #atmosphere-canvas {
   position: fixed;
   top: 0;
@@ -65,20 +64,41 @@ body {
   height: 100dvh;
   pointer-events: none;
   z-index: var(--z-atmosphere);
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
-/* Typography elements */
+/* Recurring Traveling Energy Particle Canvas / Motif */
+#energy-trail-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  pointer-events: none;
+  z-index: var(--z-energy-trail);
+}
+
+/* Editorial Typography */
 h1, h2, h3, h4 {
-  font-family: var(--font-display);
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-weight: 400;
   line-height: 1.08;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  color: var(--color-white);
+  text-transform: none; /* Mixed-case editorial headings */
+}
+
+h1 em, h2 em, h3 em {
+  font-style: italic;
+  font-family: var(--font-serif);
+  color: var(--color-white);
 }
 
 p {
-  line-height: 1.6;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.65;
   color: var(--color-text-muted);
 }
 
@@ -99,7 +119,7 @@ img, svg {
   max-width: 100%;
 }
 
-/* Prefers Reduced Motion */
+/* Reduced Motion Mode */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

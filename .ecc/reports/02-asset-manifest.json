@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-07T05:57:27.209Z",
+  "timestamp": "2026-11-07T06:41:22.135Z",
   "status": "VERIFIED",
   "assets": [
     {
@@ -18,7 +18,13 @@
       "path": "index.html#spark-sphere-canvas",
       "type": "canvas",
       "role": "Scene 01 Energy Core",
-      "particles": 180
+      "particles": 140
+    },
+    {
+      "path": "index.html#energy-trail-canvas",
+      "type": "canvas",
+      "role": "Recurring Energy Motif & Light Trail",
+      "waypoints": 6
     },
     {
       "path": "index.html#imagination-blueprint-svg",
@@ -43,12 +49,6 @@
       "type": "css-gradient",
       "role": "Scene 05 Sweeping Beams",
       "beams": 4
-    },
-    {
-      "path": "index.html#invitation-solar-bloom",
-      "type": "css-radial",
-      "role": "Scene 06 Sunrise Bloom",
-      "scale": 1.85
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-07T05:57:27.377Z",
+  "timestamp": "2026-11-07T06:41:22.376Z",
   "status": "PASSED",
   "landmarks": {
     "banner": true,
@@ -11,8 +11,13 @@
   "headingHierarchy": {
     "h1Count": 1,
     "h2Count": 5,
-    "h3Count": 9,
+    "h3Count": 5,
     "validOrder": true
+  },
+  "typography": {
+    "displayFont": "Instrument Serif",
+    "bodyFont": "DM Sans",
+    "casing": "Mixed-case editorial"
   },
   "responsiveSupport": {
     "viewports": [

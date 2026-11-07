@@ -30,15 +30,14 @@ export function initScene01() {
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas, { passive: true });
 
-  // 180 depth-sorted orbital particles
   particles = [];
-  const particleCount = window.innerWidth < 768 ? 65 : 180;
+  const particleCount = window.innerWidth < 768 ? 50 : 140;
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       angle: Math.random() * Math.PI * 2,
-      radius: Math.random() * 110 + 25,
-      speed: (Math.random() * 0.02 + 0.005) * (Math.random() > 0.5 ? 1 : -1),
-      size: Math.random() * 2.5 + 0.8,
+      radius: Math.random() * 110 + 20,
+      speed: (Math.random() * 0.015 + 0.005) * (Math.random() > 0.5 ? 1 : -1),
+      size: Math.random() * 2.2 + 0.8,
       color: Math.random() > 0.4 ? '#00E5FF' : '#FFC107',
       alpha: Math.random() * 0.7 + 0.3,
     });
@@ -55,20 +54,20 @@ export function initScene01() {
 
       ctx.clearRect(0, 0, w, h);
 
-      // Core plasma glow
-      const pulse = 1 + Math.sin(time * 3) * 0.06;
-      const coreGrad = ctx.createRadialGradient(cx, cy, 5, cx, cy, 90 * pulse);
+      // Core plasma aura
+      const pulse = 1 + Math.sin(time * 2.5) * 0.05;
+      const coreGrad = ctx.createRadialGradient(cx, cy, 4, cx, cy, 80 * pulse);
       coreGrad.addColorStop(0, '#FFFFFF');
-      coreGrad.addColorStop(0.25, '#FFC107');
-      coreGrad.addColorStop(0.65, '#00E5FF');
+      coreGrad.addColorStop(0.2, '#FFC107');
+      coreGrad.addColorStop(0.6, '#00E5FF');
       coreGrad.addColorStop(1, 'transparent');
 
       ctx.fillStyle = coreGrad;
       ctx.beginPath();
-      ctx.arc(cx, cy, 100 * pulse, 0, Math.PI * 2);
+      ctx.arc(cx, cy, 85 * pulse, 0, Math.PI * 2);
       ctx.fill();
 
-      // Orbital particles
+      // Orbital sparks
       for (let p of particles) {
         p.angle += p.speed;
         const px = cx + Math.cos(p.angle) * p.radius;
@@ -88,17 +87,18 @@ export function initScene01() {
 
   renderSphere();
 
-  // Offscreen canvas gating
+  // Canvas visibility gating
   observer = new IntersectionObserver(([entry]) => {
     isVisible = entry.isIntersecting;
   }, { threshold: 0.05 });
-  observer.observe(document.getElementById('scene-spark'));
+  const section = document.getElementById('scene-spark');
+  if (section) observer.observe(section);
 
   if (isReducedMotionPreferred()) {
     return;
   }
 
-  // Scroll scrub choreography
+  // Camera moves toward energy source on scroll
   const timeline = gsap.timeline({
     scrollTrigger: {
       trigger: '#scene-spark',
@@ -109,12 +109,12 @@ export function initScene01() {
   });
 
   timeline
-    .to('.ring-outer', { rotation: 120, scale: 1.65, ease: 'none' }, 0)
-    .to('.ring-mid', { rotation: -90, scale: 1.45, ease: 'none' }, 0)
-    .to('.ring-inner', { rotation: 180, scale: 1.25, ease: 'none' }, 0)
-    .to('.spark-sphere-container', { scale: 2.6, ease: 'power1.inOut' }, 0)
-    .to('#spark-headline', { yPercent: -85, letterSpacing: '0.08em', opacity: 0, ease: 'power2.in' }, 0)
-    .to('.scroll-prompt', { opacity: 0, y: -20, ease: 'power1.in' }, 0);
+    .to('.ring-outer', { rotation: 90, scale: 1.5, ease: 'none' }, 0)
+    .to('.ring-mid', { rotation: -70, scale: 1.35, ease: 'none' }, 0)
+    .to('.spark-illustration-stage', { scale: 2.2, yPercent: 15, ease: 'power1.inOut' }, 0)
+    .to('#spark-headline', { yPercent: -40, opacity: 0, ease: 'power2.in' }, 0)
+    .to('.editorial-subtext', { yPercent: -30, opacity: 0, ease: 'power2.in' }, 0)
+    .to('.scroll-hint', { opacity: 0, ease: 'power1.in' }, 0);
 
   sceneTrigger = timeline.scrollTrigger;
 }

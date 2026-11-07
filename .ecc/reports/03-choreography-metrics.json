@@ -1,27 +1,28 @@
 {
-  "timestamp": "2026-11-07T05:57:32.794Z",
+  "timestamp": "2026-11-07T06:41:32.542Z",
   "status": "OPTIMAL",
   "unifiedTicker": "Lenis + GSAP 3.12 bound to single gsap.ticker",
+  "recurringMotif": "Animated multi-state energy trail connecting all 6 scenes",
   "frameRateTarget": "60 - 120 fps",
   "maxScrollFrameBudgetMs": 16.67,
   "scenes": [
     {
       "chapter": "01",
       "title": "The Spark",
-      "type": "canvas-scrub",
+      "type": "canvas-dolly-zoom",
       "scrubDuration": 0.8
     },
     {
       "chapter": "02",
       "title": "The Imagination",
       "type": "pinned-blueprint-draw",
-      "pinDistance": "+=160%"
+      "pinDistance": "+=150%"
     },
     {
       "chapter": "03",
       "title": "The Creation",
       "type": "pinned-robotic-docking",
-      "pinDistance": "+=180%"
+      "pinDistance": "+=160%"
     },
     {
       "chapter": "04",
@@ -32,7 +33,7 @@
     {
       "chapter": "05",
       "title": "The Gathering",
-      "type": "staggered-card-parallax",
+      "type": "sweeping-spotlight-arena",
       "scrubDuration": 0.7
     },
     {

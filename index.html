@@ -3,520 +3,357 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0A1128" />
-  <meta name="description" content="TECHFEST — A FUTURE IN MOTION | Interactive Parallax Storytelling Experience for Techfest, IIT Bombay. 16th - 18th December, 2026." />
-  <title>TECHFEST — A FUTURE IN MOTION | Interactive Parallax Storytelling</title>
+  <meta name="theme-color" content="#070D1F" />
+  <meta name="description" content="Techfest — A Future in Motion | An immersive, illustrated parallax storytelling experience for Techfest, IIT Bombay." />
+  <title>Techfest — A Future in Motion | An Illustrated Journey</title>
 
-  <!-- Google Fonts Preconnect -->
+  <!-- Google Fonts: Instrument Serif & DM Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <!-- Modular Styles -->
+  <!-- Modular Stylesheets -->
   <link rel="stylesheet" href="/src/styles/tokens.css" />
   <link rel="stylesheet" href="/src/styles/base.css" />
   <link rel="stylesheet" href="/src/styles/layout.css" />
   <link rel="stylesheet" href="/src/styles/scenes.css" />
 </head>
 <body>
-  <!-- Skip Link for WCAG 2.2 AA Accessibility -->
+  <!-- Skip Link for WCAG Accessibility -->
   <a href="#main-content" class="skip-to-main">Skip to main story</a>
 
-  <!-- Ambient Full-Page Atmosphere Canvas -->
+  <!-- Ambient Atmosphere Canvas -->
   <canvas id="atmosphere-canvas" aria-hidden="true" role="presentation"></canvas>
 
-  <!-- Top Minimalist Header Bar -->
+  <!-- Recurring Traveling Energy Particle & Light Trail -->
+  <canvas id="energy-trail-canvas" aria-hidden="true" role="presentation"></canvas>
+
+  <!-- Floating Minimal Header -->
   <header role="banner" id="site-header">
     <div class="brand-group">
       <div class="brand-logos">
-        <a href="#scene-spark" aria-label="Techfest - Return to beginning">
-          <img src="/assets/techfest-logo.png" alt="Official Techfest Logo" class="logo-img techfest-logo" />
+        <a href="#scene-spark" aria-label="Techfest — Return to journey start">
+          <img src="/assets/techfest-logo.png" alt="Techfest Official Logo" class="logo-img techfest-logo" />
         </a>
-        <a href="https://www.iitb.ac.in/" target="_blank" rel="noopener noreferrer" aria-label="Indian Institute of Technology Bombay Official Website">
-          <img src="/assets/iitb-logo.png" alt="Official IIT Bombay Seal" class="logo-img iitb-logo" />
+        <a href="https://www.iitb.ac.in/" target="_blank" rel="noopener noreferrer" aria-label="IIT Bombay Official Website">
+          <img src="/assets/iitb-logo.png" alt="IIT Bombay Official Seal" class="logo-img iitb-logo" />
         </a>
       </div>
       <div class="brand-text">
-        <span class="brand-title">TECHFEST</span>
-        <span class="brand-sub">IIT BOMBAY // A FUTURE IN MOTION</span>
+        <span class="brand-title">Techfest</span>
+        <span class="brand-sub">IIT Bombay</span>
       </div>
     </div>
 
-    <div class="header-center">
-      <span id="header-chapter-readout" aria-live="polite">01 // THE SPARK</span>
-    </div>
+    <nav class="header-nav" aria-label="Story navigation">
+      <a href="#scene-spark" class="nav-link">The Spark</a>
+      <a href="#scene-imagination" class="nav-link">Imagination</a>
+      <a href="#scene-creation" class="nav-link">Creation</a>
+      <a href="#scene-frontier" class="nav-link">Frontier</a>
+      <a href="#scene-gathering" class="nav-link">Gathering</a>
+      <a href="#scene-invitation" class="nav-link">Invitation</a>
+    </nav>
 
     <div class="header-actions">
-      <button id="toggle-motion-btn" class="btn-header btn-motion-toggle" type="button" aria-pressed="false" aria-label="Toggle reduced motion animation mode">
+      <button id="toggle-motion-btn" class="btn-header btn-motion-toggle" type="button" aria-pressed="false" aria-label="Toggle motion comfort mode">
         <span>Motion: Full</span>
       </button>
-      <button id="header-explore-btn" class="btn-header btn-explore" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="explorer-overlay">
-        <span>Explore</span>
-      </button>
-      <a id="header-official-link" href="https://techfest.org/" target="_blank" rel="noopener noreferrer" class="btn-header btn-official">
-        <span>Official Site ↗</span>
+      <a id="header-official-link" href="https://techfest.org/" target="_blank" rel="noopener noreferrer" class="btn-header btn-official-nav">
+        <span>Official Portal ↗</span>
       </a>
     </div>
   </header>
 
-  <!-- Fixed Chapter Progress HUD -->
-  <nav aria-label="Story Chapters" id="chapter-hud">
-    <div class="hud-rail-container">
-      <ul class="hud-nav-list">
-        <li>
-          <button type="button" class="chapter-nav-btn active" data-scene="01" data-scene-target="#scene-spark" aria-current="step" aria-label="Chapter 01: The Spark">
-            <span class="nav-title">01 THE SPARK</span>
-            <span class="nav-dot"></span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="chapter-nav-btn" data-scene="02" data-scene-target="#scene-imagination" aria-current="false" aria-label="Chapter 02: The Imagination">
-            <span class="nav-title">02 THE IMAGINATION</span>
-            <span class="nav-dot"></span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="chapter-nav-btn" data-scene="03" data-scene-target="#scene-creation" aria-current="false" aria-label="Chapter 03: The Creation">
-            <span class="nav-title">03 THE CREATION</span>
-            <span class="nav-dot"></span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="chapter-nav-btn" data-scene="04" data-scene-target="#scene-frontier" aria-current="false" aria-label="Chapter 04: The Frontier">
-            <span class="nav-title">04 THE FRONTIER</span>
-            <span class="nav-dot"></span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="chapter-nav-btn" data-scene="05" data-scene-target="#scene-gathering" aria-current="false" aria-label="Chapter 05: The Gathering">
-            <span class="nav-title">05 THE GATHERING</span>
-            <span class="nav-dot"></span>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="chapter-nav-btn" data-scene="06" data-scene-target="#scene-invitation" aria-current="false" aria-label="Chapter 06: The Invitation">
-            <span class="nav-title">06 THE INVITATION</span>
-            <span class="nav-dot"></span>
-          </button>
-        </li>
-      </ul>
-      <div class="hud-track" aria-hidden="true">
-        <div id="hud-progress-fill"></div>
-      </div>
-    </div>
-    <div class="hud-readout" aria-hidden="true">
-      <span id="hud-percentage">0%</span>
-    </div>
-  </nav>
-
-  <!-- Main Story Content Landmark -->
+  <!-- Main Story Content -->
   <main id="main-content">
     <!-- 01 / THE SPARK -->
-    <section class="scene scene-spark" id="scene-spark" data-chapter="01" aria-labelledby="spark-headline">
+    <section class="scene scene-spark" id="scene-spark" aria-labelledby="spark-headline">
       <div class="parallax-plane plane-0" data-parallax-layer="layer-0" id="spark-bg-stars" aria-hidden="true"></div>
-      
-      <!-- Plane 1: Concentric Quantum Containment Rings -->
-      <div class="parallax-plane plane-1 spark-sphere-container" data-parallax-layer="layer-1" id="spark-containment-rings" aria-hidden="true" data-mouse-depth="15">
+
+      <!-- Central Luminous Energy Sphere & Quantum Rings -->
+      <div class="spark-illustration-stage parallax-plane plane-1" data-parallax-layer="layer-1" aria-hidden="true" data-mouse-depth="14">
         <div class="quantum-ring ring-outer"></div>
         <div class="quantum-ring ring-mid"></div>
         <div class="quantum-ring ring-inner"></div>
-        <!-- Plane 2: Dedicated Plasma Energy Sphere Canvas -->
-        <canvas id="spark-sphere-canvas" width="400" height="400" role="img" aria-label="Bioluminescent plasma energy core symbolizing curiosity"></canvas>
+        <canvas id="spark-sphere-canvas" width="440" height="440" role="img" aria-label="Luminous plasma energy core symbolizing human curiosity"></canvas>
       </div>
 
-      <!-- Plane 3: Narrative & Hero Reveal -->
-      <div class="scene-inner spark-content parallax-plane plane-3" data-parallax-layer="layer-3" id="spark-narrative">
-        <span class="chapter-badge">01 // THE SPARK</span>
-        <h1 id="spark-headline" class="chapter-headline">THE FUTURE DOESN'T WAIT. IT BEGINS WITH YOU.</h1>
-        <p class="chapter-subtext">Every extraordinary invention begins with an extraordinary question.</p>
-        <div class="scroll-prompt" aria-hidden="true">
-          <span>SCROLL TO IGNITE THE JOURNEY</span>
-          <div class="scroll-telemetry-line"></div>
+      <!-- Integrated Editorial Story Deck -->
+      <div class="editorial-story parallax-plane plane-3" data-parallax-layer="layer-3">
+        <h1 id="spark-headline" class="editorial-headline"><em>The future doesn't wait.</em> It begins with you.</h1>
+        <p class="editorial-subtext">Every extraordinary invention begins with an extraordinary question.</p>
+        
+        <div class="scroll-hint" aria-hidden="true">
+          <span>Scroll to travel through the world</span>
+          <div class="scroll-line-indicator"></div>
         </div>
       </div>
-
-      <!-- Plane 4: High-Velocity Foreground Bokeh Particles -->
-      <div class="parallax-plane plane-4" data-parallax-layer="layer-4" id="spark-fg-particles" aria-hidden="true"></div>
     </section>
 
     <!-- 02 / THE IMAGINATION -->
-    <section class="scene scene-imagination" id="scene-imagination" data-chapter="02" aria-labelledby="imagination-headline">
-      <!-- Plane 0: Isometric Blueprint Grid -->
-      <div class="parallax-plane plane-0 blueprint-grid-canvas" data-parallax-layer="layer-0" id="imagination-grid-bg" aria-hidden="true"></div>
-      <div class="parallax-plane plane-1" data-parallax-layer="layer-1" id="imagination-drafting-backdrop" aria-hidden="true"></div>
+    <section class="scene scene-imagination" id="scene-imagination" aria-labelledby="imagination-headline">
+      <div class="parallax-plane plane-0 blueprint-canvas-layer" data-parallax-layer="layer-0" aria-hidden="true"></div>
 
-      <div class="scene-inner imagination-layout">
-        <!-- Left Editorial Narrative Column -->
-        <div class="imagination-copy parallax-plane plane-3" data-parallax-layer="layer-3">
-          <span class="chapter-badge">02 // THE IMAGINATION</span>
-          <h2 id="imagination-headline" class="chapter-headline">BEFORE THE INVENTION, THERE WAS AN IDEA.</h2>
-          <p class="chapter-subtext">Curiosity transforms possibilities into plans. Imagination gives technology its first shape.</p>
-          
-          <!-- Floating Mathematical & Engineering Equations -->
-          <div class="blueprint-telemetry" id="imagination-equations-layer">
-            <div class="equation-card">SYS.BLUEPRINT // REV 4.02 — KINEMATIC TOPOLOGY</div>
-            <div class="equation-card">∇ × E = -∂B/∂t | MAXWELL FIELD SYNTHESIS</div>
-            <div class="equation-card">L = T - V | EULER-LAGRANGE DYNAMICS</div>
-          </div>
-        </div>
+      <div class="editorial-story parallax-plane plane-3" data-parallax-layer="layer-3">
+        <h2 id="imagination-headline" class="editorial-headline">Before the invention, <em>there was an idea.</em></h2>
+        <p class="editorial-subtext">Curiosity transforms possibilities into plans. Imagination gives technology its first shape.</p>
+      </div>
 
-        <!-- Right Centerpiece Holographic Blueprint SVG -->
-        <div class="blueprint-card-stage" data-mouse-depth="20">
-          <svg id="imagination-blueprint-svg" class="blueprint-svg" viewBox="0 0 800 500" role="img" aria-label="Holographic engineering blueprint of an autonomous robotic core">
-            <defs>
-              <linearGradient id="cyanGlowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#00E5FF" />
-                <stop offset="100%" stop-color="#3B82F6" />
-              </linearGradient>
-            </defs>
-            <!-- Outer Chassis Wireframe -->
-            <rect x="60" y="40" width="680" height="420" rx="16" class="blueprint-svg-path" stroke-dasharray="6 6" />
-            <line x1="60" y1="90" x2="740" y2="90" class="blueprint-svg-path" />
-            <line x1="60" y1="410" x2="740" y2="410" class="blueprint-svg-path" />
-            <!-- Central Gyroscopic Core -->
-            <circle cx="400" cy="250" r="120" class="blueprint-svg-path" stroke="url(#cyanGlowGrad)" />
-            <circle cx="400" cy="250" r="80" class="blueprint-svg-path" />
-            <circle cx="400" cy="250" r="40" class="blueprint-svg-path" />
-            <circle cx="400" cy="250" r="10" fill="#00E5FF" />
-            <!-- Neural Bus Crossbars -->
-            <line x1="200" y1="250" x2="600" y2="250" class="blueprint-svg-path" />
-            <line x1="400" y1="100" x2="400" y2="400" class="blueprint-svg-path" />
-            <!-- Isometric Dimension Vectors -->
-            <path d="M 280 160 L 340 120 L 460 120 L 520 160" class="blueprint-svg-path" />
-            <path d="M 280 340 L 340 380 L 460 380 L 520 340" class="blueprint-svg-path" />
-            <!-- Telemetry Nodes -->
-            <circle cx="280" cy="160" r="4" fill="#FFC107" />
-            <circle cx="520" cy="160" r="4" fill="#FFC107" />
-            <circle cx="280" cy="340" r="4" fill="#FFC107" />
-            <circle cx="520" cy="340" r="4" fill="#FFC107" />
-          </svg>
-        </div>
+      <!-- Hand-Drawn Technical Blueprint Illustration -->
+      <div class="blueprint-stage parallax-plane plane-2" data-parallax-layer="layer-2" data-mouse-depth="18">
+        <svg id="imagination-blueprint-svg" class="blueprint-svg" viewBox="0 0 800 480" role="img" aria-label="Hand-drawn architectural and mechanical blueprint schematics">
+          <defs>
+            <linearGradient id="blueprintGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#38BDF8" />
+              <stop offset="100%" stop-color="#818CF8" />
+            </linearGradient>
+          </defs>
+          <!-- Outer Chassis & Dimensional Vectors -->
+          <rect x="80" y="40" width="640" height="400" rx="14" class="blueprint-svg-path" stroke-dasharray="6 6" />
+          <line x1="80" y1="90" x2="720" y2="90" class="blueprint-svg-path" />
+          <line x1="80" y1="390" x2="720" y2="390" class="blueprint-svg-path" />
+          <!-- Central Optical Quantum Core -->
+          <circle cx="400" cy="240" r="110" class="blueprint-svg-path" stroke="url(#blueprintGrad)" />
+          <circle cx="400" cy="240" r="75" class="blueprint-svg-path" />
+          <circle cx="400" cy="240" r="40" class="blueprint-svg-path" />
+          <circle cx="400" cy="240" r="8" fill="#38BDF8" />
+          <!-- Kinematic Linkages -->
+          <line x1="220" y1="240" x2="580" y2="240" class="blueprint-svg-path" />
+          <line x1="400" y1="110" x2="400" y2="370" class="blueprint-svg-path" />
+          <path d="M 280 150 L 340 110 L 460 110 L 520 150" class="blueprint-svg-path" />
+          <path d="M 280 330 L 340 370 L 460 370 L 520 330" class="blueprint-svg-path" />
+          <!-- Calibration Nodes -->
+          <circle cx="280" cy="150" r="4" fill="#FBBF24" />
+          <circle cx="520" cy="150" r="4" fill="#FBBF24" />
+          <circle cx="280" cy="330" r="4" fill="#FBBF24" />
+          <circle cx="520" cy="330" r="4" fill="#FBBF24" />
+        </svg>
       </div>
     </section>
 
     <!-- 03 / THE CREATION -->
-    <section class="scene scene-creation" id="scene-creation" data-chapter="03" aria-labelledby="creation-headline">
-      <div class="parallax-plane plane-0" data-parallax-layer="layer-0" id="creation-lab-bg" aria-hidden="true"></div>
-      <div class="parallax-plane plane-1" data-parallax-layer="layer-1" id="creation-gantry-layer" aria-hidden="true"></div>
-
-      <div class="scene-inner creation-layout">
-        <!-- Left Editorial Narrative & Hotspots -->
-        <div class="creation-copy parallax-plane plane-3" data-parallax-layer="layer-3">
-          <span class="chapter-badge">03 // THE CREATION</span>
-          <h2 id="creation-headline" class="chapter-headline">IDEAS ARE NOTHING WITHOUT THE COURAGE TO BUILD.</h2>
-          <p class="chapter-subtext">From the first prototype to complex machines, engineering turns imagination into reality.</p>
-
-          <!-- Interactive Machine Inspection Hotspots -->
-          <div class="hotspots-container" aria-label="Machine component telemetry">
-            <button type="button" class="hotspot-trigger" aria-expanded="false" aria-controls="hotspot-info-1">
-              <div>
-                <div class="hotspot-label">01. OPTICAL QUANTUM CORE</div>
-                <div class="hotspot-desc" id="hotspot-info-1">High-density photonic processing unit synthesizing real-time spatial perception.</div>
-              </div>
-              <span aria-hidden="true">+</span>
-            </button>
-            <button type="button" class="hotspot-trigger" aria-expanded="false" aria-controls="hotspot-info-2">
-              <div>
-                <div class="hotspot-label">02. 6-DOF ARTICULATED MANIPULATORS</div>
-                <div class="hotspot-desc" id="hotspot-info-2">Precision servo-actuated robotic arms capable of sub-millimeter assembly tolerances.</div>
-              </div>
-              <span aria-hidden="true">+</span>
-            </button>
-            <button type="button" class="hotspot-trigger" aria-expanded="false" aria-controls="hotspot-info-3">
-              <div>
-                <div class="hotspot-label">03. NEURAL POWER CHASSIS</div>
-                <div class="hotspot-desc" id="hotspot-info-3">Structural carbon-titanium exoshell routing high-voltage actuation buses.</div>
-              </div>
-              <span aria-hidden="true">+</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Right Spatially Decomposed Robotic Assembly Stage -->
-        <div class="robot-stage-wrap" data-mouse-depth="22">
-          <svg class="robot-assembly-svg" viewBox="0 0 600 500" role="img" aria-label="Articulated mechatronic robotic system assembling onto central chassis">
-            <!-- Part: Lower Chassis Base -->
-            <g class="robot-part part-lower-chassis-base">
-              <rect x="180" y="380" width="240" height="40" rx="8" fill="#1E293B" stroke="#00B4D8" stroke-width="2" />
-              <line x1="220" y1="420" x2="380" y2="420" stroke="#FF6B35" stroke-width="3" />
-            </g>
-            <!-- Part: Central Cybernetic Core -->
-            <g class="robot-part part-central-core">
-              <rect x="230" y="220" width="140" height="150" rx="12" fill="#0F172A" stroke="#00B4D8" stroke-width="2.5" />
-              <circle cx="300" cy="295" r="40" fill="#00B4D8" opacity="0.3" />
-              <circle cx="300" cy="295" r="22" fill="#FF6B35" />
-            </g>
-            <!-- Part: Upper Sensor Head Array -->
-            <g class="robot-part part-upper-sensor-head">
-              <polygon points="260,190 340,190 320,130 280,130" fill="#1E293B" stroke="#00B4D8" stroke-width="2" />
-              <circle cx="300" cy="160" r="8" fill="#00E5FF" />
-            </g>
-            <!-- Part: Left Articulated Manipulator -->
-            <g class="robot-part part-left-manipulator">
-              <path d="M 230 260 L 120 220 L 70 290" fill="none" stroke="#94A3B8" stroke-width="12" stroke-linecap="round" />
-              <circle cx="120" cy="220" r="14" fill="#FF6B35" />
-              <circle cx="70" cy="290" r="10" fill="#00B4D8" />
-            </g>
-            <!-- Part: Right Articulated Manipulator -->
-            <g class="robot-part part-right-manipulator">
-              <path d="M 370 260 L 480 220 L 530 290" fill="none" stroke="#94A3B8" stroke-width="12" stroke-linecap="round" />
-              <circle cx="480" cy="220" r="14" fill="#FF6B35" />
-              <circle cx="530" cy="290" r="10" fill="#00B4D8" />
-            </g>
-            <!-- Part: Circuit Telemetry HUD Overlay -->
-            <g class="robot-part part-circuit-hud-overlay">
-              <circle cx="300" cy="295" r="90" fill="none" stroke="#00E5FF" stroke-width="1" stroke-dasharray="4 8" />
-              <path d="M 190 180 L 160 140 H 100" fill="none" stroke="#00B4D8" stroke-width="1.5" />
-              <path d="M 410 180 L 440 140 H 500" fill="none" stroke="#00B4D8" stroke-width="1.5" />
-            </g>
-          </svg>
-        </div>
+    <section class="scene scene-creation" id="scene-creation" aria-labelledby="creation-headline">
+      <div class="editorial-story parallax-plane plane-3" data-parallax-layer="layer-3">
+        <h2 id="creation-headline" class="editorial-headline">Ideas are nothing <em>without the courage to build.</em></h2>
+        <p class="editorial-subtext">From the first prototype to complex machines, engineering turns imagination into reality.</p>
       </div>
 
-      <!-- Plane 4: High-Velocity Welding Particles -->
-      <div class="parallax-plane plane-4" data-parallax-layer="layer-4" id="creation-sparks-fg" aria-hidden="true"></div>
-    </section>
-
-    <!-- 04 / THE FRONTIER -->
-    <section class="scene scene-frontier" id="scene-frontier" data-chapter="04" aria-labelledby="frontier-headline">
-      <div class="parallax-plane plane-0" data-parallax-layer="layer-0" id="frontier-space-bg" aria-hidden="true"></div>
-      
-      <!-- Plane 1: Curved Earth Horizon -->
-      <div class="earth-horizon parallax-plane plane-1" data-parallax-layer="layer-1" id="frontier-earth-horizon" aria-hidden="true"></div>
-
-      <!-- Plane 2: Orbiting SVG Satellite -->
-      <div class="satellite-layer parallax-plane plane-2" data-parallax-layer="layer-2" id="frontier-satellite" aria-hidden="true">
-        <svg viewBox="0 0 100 100" width="100" height="100">
-          <rect x="35" y="35" width="30" height="30" fill="#E2E8F0" stroke="#00E5FF" stroke-width="2" />
-          <line x1="5" y1="50" x2="35" y2="50" stroke="#00E5FF" stroke-width="3" />
-          <rect x="5" y="40" width="25" height="20" fill="#1E3A8A" stroke="#00E5FF" stroke-width="1" />
-          <line x1="65" y1="50" x2="95" y2="50" stroke="#00E5FF" stroke-width="3" />
-          <rect x="70" y="40" width="25" height="20" fill="#1E3A8A" stroke="#00E5FF" stroke-width="1" />
-          <circle cx="50" cy="50" r="4" fill="#FF5722" />
+      <!-- Illustrated Articulated Robotics Stage -->
+      <div class="creation-stage-wrap parallax-plane plane-2" data-parallax-layer="layer-2" data-mouse-depth="16">
+        <svg id="creation-robot-assembly" class="robot-assembly-svg" viewBox="0 0 600 480" role="img" aria-label="Articulated industrial robotic system assembling onto central chassis">
+          <!-- Chassis Base -->
+          <g class="robot-part part-lower-chassis-base">
+            <rect x="180" y="370" width="240" height="40" rx="8" fill="#182337" stroke="#38BDF8" stroke-width="2" />
+            <line x1="210" y1="410" x2="390" y2="410" stroke="#FB923C" stroke-width="3" />
+          </g>
+          <!-- Central Power Core -->
+          <g class="robot-part part-central-core">
+            <rect x="235" y="210" width="130" height="150" rx="12" fill="#0E1726" stroke="#38BDF8" stroke-width="2.5" />
+            <circle cx="300" cy="285" r="38" fill="#38BDF8" opacity="0.25" />
+            <circle cx="300" cy="285" r="18" fill="#FB923C" />
+          </g>
+          <!-- Sensor Head -->
+          <g class="robot-part part-upper-sensor-head">
+            <polygon points="260,180 340,180 320,120 280,120" fill="#182337" stroke="#38BDF8" stroke-width="2" />
+            <circle cx="300" cy="150" r="7" fill="#38BDF8" />
+          </g>
+          <!-- Left Manipulator Arm -->
+          <g class="robot-part part-left-manipulator">
+            <path d="M 235 250 L 120 210 L 70 280" fill="none" stroke="#94A3B8" stroke-width="10" stroke-linecap="round" />
+            <circle cx="120" cy="210" r="12" fill="#FB923C" />
+            <circle cx="70" cy="280" r="9" fill="#38BDF8" />
+          </g>
+          <!-- Right Manipulator Arm -->
+          <g class="robot-part part-right-manipulator">
+            <path d="M 365 250 L 480 210 L 530 280" fill="none" stroke="#94A3B8" stroke-width="10" stroke-linecap="round" />
+            <circle cx="480" cy="210" r="12" fill="#FB923C" />
+            <circle cx="530" cy="280" r="9" fill="#38BDF8" />
+          </g>
+          <!-- HUD Conduit Overlay -->
+          <g class="robot-part part-circuit-hud-overlay">
+            <circle cx="300" cy="285" r="85" fill="none" stroke="#38BDF8" stroke-width="1" stroke-dasharray="4 8" />
+            <path d="M 190 170 L 160 130 H 100" fill="none" stroke="#38BDF8" stroke-width="1.5" />
+            <path d="M 410 170 L 440 130 H 500" fill="none" stroke="#38BDF8" stroke-width="1.5" />
+          </g>
         </svg>
       </div>
 
-      <div class="scene-inner">
-        <span class="chapter-badge">04 // THE FRONTIER</span>
-        <h2 id="frontier-headline" class="chapter-headline">THERE ARE NO FINISH LINES TO HUMAN CURIOSITY.</h2>
-        <p class="chapter-subtext">From artificial intelligence to robotics, aerospace and emerging sciences, the next frontier is waiting to be explored.</p>
+      <!-- Integrated Mechanical Hotspot Pills -->
+      <div class="hotspot-node-group interactive-layer" role="group" aria-label="Interactive machine components">
+        <button type="button" class="hotspot-pill" aria-expanded="false" aria-controls="hotspot-info-1">
+          <span class="hotspot-indicator-dot"></span>
+          <span>Optical Quantum Core</span>
+        </button>
+        <button type="button" class="hotspot-pill" aria-expanded="false" aria-controls="hotspot-info-2">
+          <span class="hotspot-indicator-dot"></span>
+          <span>6-DOF Articulated Arms</span>
+        </button>
+        <button type="button" class="hotspot-pill" aria-expanded="false" aria-controls="hotspot-info-3">
+          <span class="hotspot-indicator-dot"></span>
+          <span>Neural Power Chassis</span>
+        </button>
+      </div>
+    </section>
 
-        <!-- 5 Interactive Technology Domain Nodes -->
-        <div class="domains-grid" id="frontier-domains-constellation" role="group" aria-label="Exploration domains">
-          <button type="button" class="domain-node" data-domain-key="ai" aria-haspopup="dialog" aria-expanded="false" aria-controls="domain-detail-panel">
-            <span class="domain-icon">01 // DOMAIN</span>
-            <h3 class="domain-title">Artificial Intelligence</h3>
-            <p class="domain-snippet">Neural architectures, autonomous reasoning, and generative systems.</p>
+    <!-- 04 / THE FRONTIER -->
+    <section class="scene scene-frontier" id="scene-frontier" aria-labelledby="frontier-headline">
+      <!-- Curved Illustrated Earth Horizon -->
+      <div class="earth-horizon-stage parallax-plane plane-1" data-parallax-layer="layer-1" aria-hidden="true"></div>
+
+      <!-- Orbiting Satellite -->
+      <div class="satellite-layer parallax-plane plane-2" data-parallax-layer="layer-2" aria-hidden="true">
+        <svg viewBox="0 0 80 80" width="80" height="80">
+          <rect x="25" y="25" width="30" height="30" fill="#E2E8F0" stroke="#38BDF8" stroke-width="2" />
+          <line x1="5" y1="40" x2="25" y2="40" stroke="#38BDF8" stroke-width="2.5" />
+          <rect x="5" y="32" width="20" height="16" fill="#1E3A8A" stroke="#38BDF8" stroke-width="1" />
+          <line x1="55" y1="40" x2="75" y2="40" stroke="#38BDF8" stroke-width="2.5" />
+          <rect x="55" y="32" width="20" height="16" fill="#1E3A8A" stroke="#38BDF8" stroke-width="1" />
+          <circle cx="40" cy="40" r="4" fill="#FF5722" />
+        </svg>
+      </div>
+
+      <div class="editorial-story parallax-plane plane-3" data-parallax-layer="layer-3">
+        <h2 id="frontier-headline" class="editorial-headline"><em>There are no finish lines</em> to human curiosity.</h2>
+        <p class="editorial-subtext">From artificial intelligence to robotics, aerospace and emerging sciences, the next frontier is waiting to be explored.</p>
+
+        <!-- 5 Floating Celestial Domain Nodes -->
+        <div class="domains-celestial-cluster interactive-layer" role="group" aria-label="Exploration domains">
+          <button type="button" class="domain-pill-btn" data-domain-key="ai" aria-haspopup="dialog" aria-expanded="false" aria-controls="domain-detail-panel">
+            <span class="domain-pulse-dot"></span>
+            <span>Artificial Intelligence</span>
           </button>
-
-          <button type="button" class="domain-node" data-domain-key="robotics" aria-haspopup="dialog" aria-expanded="false" aria-controls="domain-detail-panel">
-            <span class="domain-icon">02 // DOMAIN</span>
-            <h3 class="domain-title">Robotics</h3>
-            <p class="domain-snippet">Humanoid kinematics, swarm autonomy, and bio-inspired mechatronics.</p>
+          <button type="button" class="domain-pill-btn" data-domain-key="robotics" aria-haspopup="dialog" aria-expanded="false" aria-controls="domain-detail-panel">
+            <span class="domain-pulse-dot"></span>
+            <span>Robotics</span>
           </button>
-
-          <button type="button" class="domain-node" data-domain-key="aerospace" aria-haspopup="dialog" aria-expanded="false" aria-controls="domain-detail-panel">
-            <span class="domain-icon">03 // DOMAIN</span>
-            <h3 class="domain-title">Aerospace</h3>
-            <p class="domain-snippet">Orbital propulsion, flight dynamics, and deep-space telemetry.</p>
+          <button type="button" class="domain-pill-btn" data-domain-key="aerospace" aria-haspopup="dialog" aria-expanded="false" aria-controls="domain-detail-panel">
+            <span class="domain-pulse-dot"></span>
+            <span>Aerospace</span>
           </button>
-
-          <button type="button" class="domain-node" data-domain-key="quantum" aria-haspopup="dialog" aria-expanded="false" aria-controls="domain-detail-panel">
-            <span class="domain-icon">04 // DOMAIN</span>
-            <h3 class="domain-title">Quantum Technology</h3>
-            <p class="domain-snippet">Superconducting qubits, quantum cryptography, and computing.</p>
+          <button type="button" class="domain-pill-btn" data-domain-key="quantum" aria-haspopup="dialog" aria-expanded="false" aria-controls="domain-detail-panel">
+            <span class="domain-pulse-dot"></span>
+            <span>Quantum Technology</span>
           </button>
-
-          <button type="button" class="domain-node" data-domain-key="innovation" aria-haspopup="dialog" aria-expanded="false" aria-controls="domain-detail-panel">
-            <span class="domain-icon">05 // DOMAIN</span>
-            <h3 class="domain-title">Innovation & Engineering</h3>
-            <p class="domain-snippet">Sustainable energy grids, advanced materials, and breakthrough systems.</p>
+          <button type="button" class="domain-pill-btn" data-domain-key="innovation" aria-haspopup="dialog" aria-expanded="false" aria-controls="domain-detail-panel">
+            <span class="domain-pulse-dot"></span>
+            <span>Innovation & Engineering</span>
           </button>
         </div>
       </div>
     </section>
 
     <!-- 05 / THE GATHERING -->
-    <section class="scene scene-gathering" id="scene-gathering" data-chapter="05" aria-labelledby="gathering-headline">
-      <div class="parallax-plane plane-0" data-parallax-layer="layer-0" id="gathering-stage-bg" aria-hidden="true"></div>
-
-      <!-- Plane 1: Dynamic Sweeping Volumetric Spotlights -->
-      <div class="spotlight-conic-container parallax-plane plane-1" id="gathering-spotlights" aria-hidden="true">
+    <section class="scene scene-gathering" id="scene-gathering" aria-labelledby="gathering-headline">
+      <!-- Sweeping Volumetric Festival Spotlights -->
+      <div class="spotlight-conic-container parallax-plane plane-1" aria-hidden="true">
         <div class="spotlight-beam spotlight-beam-1"></div>
         <div class="spotlight-beam spotlight-beam-2"></div>
         <div class="spotlight-beam spotlight-beam-3"></div>
         <div class="spotlight-beam spotlight-beam-4"></div>
       </div>
 
-      <div class="scene-inner">
-        <span class="chapter-badge">05 // THE GATHERING</span>
-        <h2 id="gathering-headline" class="chapter-headline">WHERE THE WORLD COMES TO BUILD TOMORROW.</h2>
-        <p class="chapter-subtext">Ideas become more powerful when minds meet. Experience the energy of competitions, demonstrations, exhibitions and learning.</p>
+      <div class="festival-stage-silhouette parallax-plane plane-2" aria-hidden="true"></div>
 
-        <!-- 4 Interactive Experience Showcase Cards -->
-        <div class="experiences-grid" id="gathering-cards-grid">
-          <article class="experience-card" data-parallax-layer="layer-3" data-parallax-speed="0.45">
-            <span class="card-pillar-tag">PILLAR 01</span>
-            <h3 class="card-title">Competitions</h3>
-            <span class="card-tagline">TEST YOUR ENGINEERING METTLE</span>
-            <p class="card-desc">High-stakes national and international challenges across robotics, coding, aerospace, and design where innovators compete to solve real-world problems.</p>
-            <a href="https://techfest.org/" target="_blank" rel="noopener noreferrer" class="card-official-link">Explore Competitions on techfest.org ↗</a>
+      <div class="editorial-story parallax-plane plane-3" data-parallax-layer="layer-3">
+        <h2 id="gathering-headline" class="editorial-headline">Where the world comes to <em>build tomorrow.</em></h2>
+        <p class="editorial-subtext">Ideas become more powerful when minds meet. Experience the energy of competitions, demonstrations, exhibitions and learning.</p>
+
+        <!-- 4 Illustrated Showcase Pavilions -->
+        <div class="pillars-showcase-flow interactive-layer">
+          <article class="pillar-item">
+            <h3 class="pillar-title">Competitions</h3>
+            <span class="pillar-tagline">Test your engineering mettle</span>
+            <p class="pillar-desc">High-stakes national and international challenges across robotics, coding, aerospace, and design where innovators compete to solve real-world problems.</p>
+            <a href="https://techfest.org/" target="_blank" rel="noopener noreferrer" class="pillar-link">Discover Competitions ↗</a>
           </article>
 
-          <article class="experience-card" data-parallax-layer="layer-3" data-parallax-speed="0.65">
-            <span class="card-pillar-tag">PILLAR 02</span>
-            <h3 class="card-title">Exhibitions</h3>
-            <span class="card-tagline">WITNESS BREAKTHROUGH PROTOTYPES</span>
-            <p class="card-desc">Global showcases of cutting-edge humanoid robots, defense technology, autonomous vehicles, and research demonstrations from pioneering labs.</p>
-            <a href="https://techfest.org/" target="_blank" rel="noopener noreferrer" class="card-official-link">Explore Exhibitions on techfest.org ↗</a>
+          <article class="pillar-item">
+            <h3 class="pillar-title">Exhibitions</h3>
+            <span class="pillar-tagline">Witness breakthrough prototypes</span>
+            <p class="pillar-desc">Global showcases of cutting-edge humanoid robots, defense technology, autonomous vehicles, and research demonstrations from pioneering labs.</p>
+            <a href="https://techfest.org/" target="_blank" rel="noopener noreferrer" class="pillar-link">Discover Exhibitions ↗</a>
           </article>
 
-          <article class="experience-card" data-parallax-layer="layer-3" data-parallax-speed="0.45">
-            <span class="card-pillar-tag">PILLAR 03</span>
-            <h3 class="card-title">Workshops</h3>
-            <span class="card-tagline">MASTER EMERGING TECHNOLOGIES</span>
-            <p class="card-desc">Hands-on technical intensives led by industry practitioners covering AI, quantum computing, embedded systems, cybersecurity, and financial engineering.</p>
-            <a href="https://techfest.org/" target="_blank" rel="noopener noreferrer" class="card-official-link">Explore Workshops on techfest.org ↗</a>
+          <article class="pillar-item">
+            <h3 class="pillar-title">Workshops</h3>
+            <span class="pillar-tagline">Master emerging technologies</span>
+            <p class="pillar-desc">Hands-on technical intensives led by industry practitioners covering AI, quantum computing, embedded systems, cybersecurity, and financial engineering.</p>
+            <a href="https://techfest.org/" target="_blank" rel="noopener noreferrer" class="pillar-link">Discover Workshops ↗</a>
           </article>
 
-          <article class="experience-card" data-parallax-layer="layer-3" data-parallax-speed="0.65">
-            <span class="card-pillar-tag">PILLAR 04</span>
-            <h3 class="card-title">Lectures & Experiences</h3>
-            <span class="card-tagline">IGNITE PERSPECTIVES & WONDER</span>
-            <p class="card-desc">Keynote addresses from global laureates, scientific visionaries, and tech leaders alongside electrifying night-time technoholix performances and summits.</p>
-            <a href="https://techfest.org/" target="_blank" rel="noopener noreferrer" class="card-official-link">Explore Lectures on techfest.org ↗</a>
+          <article class="pillar-item">
+            <h3 class="pillar-title">Lectures & Experiences</h3>
+            <span class="pillar-tagline">Ignite perspectives & wonder</span>
+            <p class="pillar-desc">Keynote addresses from global laureates, scientific visionaries, and tech leaders alongside electrifying night-time technoholix performances and summits.</p>
+            <a href="https://techfest.org/" target="_blank" rel="noopener noreferrer" class="pillar-link">Discover Lectures ↗</a>
           </article>
         </div>
       </div>
     </section>
 
     <!-- 06 / THE INVITATION -->
-    <section class="scene scene-invitation" id="scene-invitation" data-chapter="06" aria-labelledby="invitation-headline">
-      <div class="parallax-plane plane-0" data-parallax-layer="layer-0" id="invitation-sunrise-bg" aria-hidden="true"></div>
-      
-      <!-- Plane 1: Luminous Expanding Solar Bloom -->
-      <div class="invitation-solar-bloom parallax-plane plane-1" id="invitation-solar-bloom" aria-hidden="true"></div>
+    <section class="scene scene-invitation" id="scene-invitation" aria-labelledby="invitation-headline">
+      <div class="invitation-sun-corona parallax-plane plane-1" aria-hidden="true"></div>
 
-      <div class="scene-inner invitation-layout parallax-plane plane-3" data-parallax-layer="layer-3">
-        <span class="chapter-badge">06 // THE INVITATION</span>
-        <h2 id="invitation-headline" class="chapter-headline">THE NEXT REVOLUTION NEEDS YOU.</h2>
-        <p class="chapter-subtext">Don't just witness the future. Become part of the people creating it.</p>
+      <div class="editorial-story parallax-plane plane-3" data-parallax-layer="layer-3">
+        <h2 id="invitation-headline" class="editorial-headline">The next revolution <em>needs you.</em></h2>
+        <p class="editorial-subtext">Don't just witness the future. Become part of the people creating it.</p>
 
-        <!-- Two Verified Primary CTAs -->
-        <div class="invitation-actions" id="invitation-cta-container">
-          <button id="cta-explore" class="btn-cta btn-cta-explore" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="explorer-overlay">
-            <span>EXPLORE TECHFEST</span>
+        <!-- Clean, Centred Translucent CTAs -->
+        <div class="invitation-actions interactive-layer">
+          <button id="cta-explore" class="btn-cta-secondary" type="button">
+            <span>Explore Techfest</span>
           </button>
-          <a id="cta-official" class="btn-cta btn-cta-official" href="https://techfest.org/" target="_blank" rel="noopener noreferrer">
-            <span>VISIT OFFICIAL WEBSITE ↗</span>
+          <a id="cta-official" class="btn-cta-primary" href="https://techfest.org/" target="_blank" rel="noopener noreferrer">
+            <span>Visit Official Website ↗</span>
           </a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Interactive Domain Detail Drawer (Modal) -->
+  <!-- Interactive Detail Drawer for Domains -->
   <div id="domain-detail-panel" class="accessible-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="domain-modal-title">
     <div class="overlay-modal-box">
-      <button id="close-domain-panel" class="overlay-close-btn" type="button" aria-label="Close domain detail modal">&times;</button>
+      <button id="close-domain-panel" class="overlay-close-btn" type="button" aria-label="Close detail modal">&times;</button>
       <div class="overlay-content">
         <h3 id="domain-modal-title">Artificial Intelligence</h3>
-        <span id="domain-modal-subtitle" class="card-tagline">COGNITIVE SYSTEMS & AUTONOMOUS REASONING</span>
+        <span id="domain-modal-subtitle" class="card-tagline">Cognitive systems & autonomous reasoning</span>
         <p id="domain-modal-desc">Neural architectures, autonomous reasoning, generative systems, and cognitive computing pushing the boundaries of machine intelligence.</p>
-        <a href="https://techfest.org/" target="_blank" rel="noopener noreferrer" class="btn-cta btn-cta-official">
-          <span>Discover at Techfest 2026 ↗</span>
+        <a href="https://techfest.org/" target="_blank" rel="noopener noreferrer" class="btn-cta-primary">
+          <span>Explore on techfest.org ↗</span>
         </a>
       </div>
     </div>
   </div>
 
-  <!-- Interactive Chapter & Domain Quick-Explorer Overlay -->
-  <div id="explorer-overlay" class="accessible-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="explorer-modal-title">
-    <div class="overlay-modal-box">
-      <button id="close-explorer" class="overlay-close-btn" type="button" aria-label="Close explorer modal">&times;</button>
-      <div class="overlay-content">
-        <h3 id="explorer-modal-title">TECHFEST EXPLORER</h3>
-        <p>Jump to any chapter or explore the pillars of Asia's Largest Science and Technology Festival.</p>
-        <div class="quick-chapter-grid">
-          <div class="quick-chapter-item" data-target-scene="#scene-spark">
-            <span class="quick-item-badge">01</span>
-            <div class="quick-item-title">THE SPARK</div>
-          </div>
-          <div class="quick-chapter-item" data-target-scene="#scene-imagination">
-            <span class="quick-item-badge">02</span>
-            <div class="quick-item-title">THE IMAGINATION</div>
-          </div>
-          <div class="quick-chapter-item" data-target-scene="#scene-creation">
-            <span class="quick-item-badge">03</span>
-            <div class="quick-item-title">THE CREATION</div>
-          </div>
-          <div class="quick-chapter-item" data-target-scene="#scene-frontier">
-            <span class="quick-item-badge">04</span>
-            <div class="quick-item-title">THE FRONTIER</div>
-          </div>
-          <div class="quick-chapter-item" data-target-scene="#scene-gathering">
-            <span class="quick-item-badge">05</span>
-            <div class="quick-item-title">THE GATHERING</div>
-          </div>
-          <div class="quick-chapter-item" data-target-scene="#scene-invitation">
-            <span class="quick-item-badge">06</span>
-            <div class="quick-item-title">THE INVITATION</div>
-          </div>
-        </div>
-        <div style="margin-top: 1.5rem; text-align: center;">
-          <a href="https://techfest.org/" target="_blank" rel="noopener noreferrer" class="btn-cta btn-cta-official">
-            <span>Go to Official Techfest Website ↗</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Accessible Footer Landmark -->
+  <!-- Minimal Translucent Footer -->
   <footer role="contentinfo" id="site-footer">
-    <div class="footer-content">
-      <div>
-        <div class="footer-brand-lockup">
-          <div class="footer-logos">
-            <img src="/assets/techfest-logo.png" alt="Techfest Official Logo" class="footer-logo-img" />
-            <img src="/assets/iitb-logo.png" alt="IIT Bombay Official Seal" class="footer-logo-img" />
-          </div>
-        </div>
-        <p class="footer-meta">
-          <strong>TECHFEST — A FUTURE IN MOTION</strong><br />
-          Independent Creative Concept for Techfest, IIT Bombay.<br />
-          Dates: 16th - 18th December, 2026.
-        </p>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="/assets/techfest-logo.png" alt="Techfest Official Logo" class="footer-logo-img" />
+        <img src="/assets/iitb-logo.png" alt="IIT Bombay Official Seal" class="footer-logo-img" />
       </div>
 
-      <div>
-        <h4 style="color: var(--color-white); font-size: var(--text-sm); margin-bottom: 0.75rem;">Official Links</h4>
-        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-family: var(--font-mono); font-size: var(--text-xs);">
-          <li><a href="https://techfest.org/" target="_blank" rel="noopener noreferrer" class="footer-link-official">Techfest Official Portal ↗</a></li>
-          <li><a href="https://www.iitb.ac.in/" target="_blank" rel="noopener noreferrer" class="footer-link-official">IIT Bombay Homepage ↗</a></li>
-        </ul>
+      <p class="footer-copy">
+        <strong>Techfest — A Future in Motion</strong><br />
+        Independent Creative Concept for Techfest, IIT Bombay.<br />
+        Festival Dates: 16th – 18th December, 2026.
+      </p>
+
+      <div class="footer-links">
+        <a href="https://techfest.org/" target="_blank" rel="noopener noreferrer">Techfest Official Portal ↗</a>
+        <span>·</span>
+        <a href="https://www.iitb.ac.in/" target="_blank" rel="noopener noreferrer">IIT Bombay ↗</a>
       </div>
 
-      <div>
-        <h4 style="color: var(--color-white); font-size: var(--text-sm); margin-bottom: 0.75rem;">Story Chapters</h4>
-        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-subtle);">
-          <li>01 // THE SPARK</li>
-          <li>02 // THE IMAGINATION</li>
-          <li>03 // THE CREATION</li>
-          <li>04 // THE FRONTIER</li>
-          <li>05 // THE GATHERING</li>
-          <li>06 // THE INVITATION</li>
-        </ul>
+      <div class="footer-credit">
+        &copy; 2026 Techfest Creative Concept. Designed with Google Antigravity.
       </div>
-    </div>
-
-    <div class="footer-bottom">
-      <span>&copy; 2026 Techfest Creative Concept. All rights reserved.</span>
-      <span>Designed with Google Antigravity &amp; affaan-m/ECC Harness.</span>
     </div>
   </footer>
 
-  <!-- Entry Script -->
+  <!-- Application Entry Script -->
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>

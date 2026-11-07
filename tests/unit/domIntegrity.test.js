@@ -3,30 +3,30 @@ import fs from 'fs';
 import path from 'path';
 import { JSDOM } from 'jsdom';
 
-describe('DOM & Semantic HTML5 Integrity Verification', () => {
+describe('DOM & Semantic HTML5 Integrity Verification (Redesign)', () => {
   const htmlPath = path.resolve(__dirname, '../../index.html');
   const htmlContent = fs.readFileSync(htmlPath, 'utf8');
   const dom = new JSDOM(htmlContent);
   const { document } = dom.window;
 
-  it('contains the 6 exact headlines from the PRD', () => {
+  it('contains the 6 headlines in mixed-case editorial typography', () => {
     const headlines = [
-      "THE FUTURE DOESN'T WAIT. IT BEGINS WITH YOU.",
-      'BEFORE THE INVENTION, THERE WAS AN IDEA.',
-      'IDEAS ARE NOTHING WITHOUT THE COURAGE TO BUILD.',
-      'THERE ARE NO FINISH LINES TO HUMAN CURIOSITY.',
-      'WHERE THE WORLD COMES TO BUILD TOMORROW.',
-      'THE NEXT REVOLUTION NEEDS YOU.',
+      "The future doesn't wait. It begins with you.",
+      'Before the invention, there was an idea.',
+      'Ideas are nothing without the courage to build.',
+      'There are no finish lines to human curiosity.',
+      'Where the world comes to build tomorrow.',
+      'The next revolution needs you.',
     ];
 
     const h1 = document.querySelector('h1#spark-headline');
     expect(h1).not.toBeNull();
-    expect(h1.textContent.trim()).toBe(headlines[0]);
+    expect(h1.textContent.replace(/\s+/g, ' ').trim()).toBe(headlines[0]);
 
-    const h2Elements = Array.from(document.querySelectorAll('h2.chapter-headline'));
+    const h2Elements = Array.from(document.querySelectorAll('h2.editorial-headline'));
     expect(h2Elements.length).toBe(5);
     for (let i = 1; i <= 5; i++) {
-      expect(h2Elements[i - 1].textContent.trim()).toBe(headlines[i]);
+      expect(h2Elements[i - 1].textContent.replace(/\s+/g, ' ').trim()).toBe(headlines[i]);
     }
   });
 
@@ -40,7 +40,7 @@ describe('DOM & Semantic HTML5 Integrity Verification', () => {
       "Don't just witness the future. Become part of the people creating it.",
     ];
 
-    const subtexts = Array.from(document.querySelectorAll('.chapter-subtext'));
+    const subtexts = Array.from(document.querySelectorAll('.editorial-subtext'));
     expect(subtexts.length).toBe(6);
     expectedSubtexts.forEach((expected, idx) => {
       expect(subtexts[idx].textContent.trim()).toBe(expected);
@@ -59,7 +59,7 @@ describe('DOM & Semantic HTML5 Integrity Verification', () => {
   });
 
   it('contains the 5 required technology domain buttons in Scene 04', () => {
-    const domains = Array.from(document.querySelectorAll('.domain-node'));
+    const domains = Array.from(document.querySelectorAll('.domain-pill-btn'));
     expect(domains.length).toBe(5);
 
     const keys = domains.map((d) => d.getAttribute('data-domain-key'));
@@ -71,10 +71,10 @@ describe('DOM & Semantic HTML5 Integrity Verification', () => {
   });
 
   it('contains the 4 required experience showcases in Scene 05', () => {
-    const cards = Array.from(document.querySelectorAll('.experience-card'));
-    expect(cards.length).toBe(4);
+    const pillars = Array.from(document.querySelectorAll('.pillar-item'));
+    expect(pillars.length).toBe(4);
 
-    const titles = cards.map((c) => c.querySelector('.card-title')?.textContent.trim());
+    const titles = pillars.map((c) => c.querySelector('.pillar-title')?.textContent.trim());
     expect(titles).toContain('Competitions');
     expect(titles).toContain('Exhibitions');
     expect(titles).toContain('Workshops');
@@ -94,10 +94,15 @@ describe('DOM & Semantic HTML5 Integrity Verification', () => {
     expect(headerLink.getAttribute('href')).toBe('https://techfest.org/');
   });
 
+  it('strictly verifies removal of right-side chapter navigation and explorer popup', () => {
+    expect(document.getElementById('chapter-hud')).toBeNull();
+    expect(document.getElementById('hud-progress-fill')).toBeNull();
+    expect(document.getElementById('explorer-overlay')).toBeNull();
+  });
+
   it('enforces semantic landmarks for WCAG 2.2 AA', () => {
     expect(document.querySelector('header[role="banner"]')).not.toBeNull();
     expect(document.querySelector('main#main-content')).not.toBeNull();
-    expect(document.querySelector('nav[aria-label="Story Chapters"]')).not.toBeNull();
     expect(document.querySelector('footer[role="contentinfo"]')).not.toBeNull();
     expect(document.querySelector('a.skip-to-main')).not.toBeNull();
   });

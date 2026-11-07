@@ -17,7 +17,7 @@ export function initScene05() {
   }
 
   const beams = $$('.spotlight-beam');
-  const cards = $$('.experience-card');
+  const pillars = $$('.pillar-item');
 
   timeline = gsap.timeline({
     scrollTrigger: {
@@ -28,30 +28,22 @@ export function initScene05() {
     },
   });
 
-  // Dynamic sweeping spotlights
+  // Sweeping stage spotlights
   if (beams.length >= 4) {
     timeline
-      .to(beams[0], { rotation: 25, ease: 'none' }, 0)
-      .to(beams[1], { rotation: -20, ease: 'none' }, 0)
-      .to(beams[2], { rotation: 22, ease: 'none' }, 0)
-      .to(beams[3], { rotation: -18, ease: 'none' }, 0);
+      .to(beams[0], { rotation: 22, ease: 'none' }, 0)
+      .to(beams[1], { rotation: -16, ease: 'none' }, 0)
+      .to(beams[2], { rotation: 18, ease: 'none' }, 0)
+      .to(beams[3], { rotation: -14, ease: 'none' }, 0);
   }
 
-  // Staggered parallax card reveal
-  if (cards.length >= 4) {
-    // Left column cards
+  // Staggered reveals for pillars
+  if (pillars.length >= 4) {
     timeline.fromTo(
-      [cards[0], cards[2]],
-      { y: 60, opacity: 0.6 },
-      { y: -20, opacity: 1, ease: 'none' },
+      pillars,
+      { y: 50, opacity: 0.5 },
+      { y: 0, opacity: 1, stagger: 0.08, ease: 'power1.out' },
       0.1
-    );
-    // Right column cards with distinct velocity
-    timeline.fromTo(
-      [cards[1], cards[3]],
-      { y: 110, opacity: 0.4 },
-      { y: -45, opacity: 1, ease: 'none' },
-      0.15
     );
   }
 }

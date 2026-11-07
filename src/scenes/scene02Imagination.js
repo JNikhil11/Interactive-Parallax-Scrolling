@@ -17,15 +17,14 @@ export function initScene02() {
     '#imagination-blueprint-svg path, #imagination-blueprint-svg circle, #imagination-blueprint-svg line, #imagination-blueprint-svg rect'
   );
 
-  // Setup path lengths for progressive drawing
   paths.forEach((el) => {
-    let len = 300;
+    let len = 250;
     try {
       if (typeof el.getTotalLength === 'function') {
         len = Math.ceil(el.getTotalLength());
       }
     } catch (e) {
-      len = 300;
+      len = 250;
     }
     el.style.strokeDasharray = `${len} ${len}`;
     if (!isReducedMotionPreferred()) {
@@ -46,39 +45,43 @@ export function initScene02() {
     scrollTrigger: {
       trigger: '#scene-imagination',
       start: 'top top',
-      end: '+=160%',
+      end: '+=150%',
       pin: true,
       scrub: 1,
       anticipatePin: 1,
     },
   });
 
-  // Phase 1 (0% -> 30%): Perspective grid tilts, headline reveals
+  // Subtle grid reveal
   timeline.fromTo(
-    '.blueprint-grid-canvas',
-    { rotateX: 0, opacity: 0.3 },
-    { rotateX: 18, opacity: 0.8, ease: 'none', duration: 0.3 },
+    '.blueprint-canvas-layer',
+    { opacity: 0.1 },
+    { opacity: 0.7, ease: 'none', duration: 0.25 },
     0
   );
 
-  // Phase 2 (30% -> 75%): SVG paths draw via strokeDashoffset scrub
+  // Progressive drawing of blueprint strokes
   timeline.to(
     paths,
     {
       strokeDashoffset: 0,
       stagger: 0.02,
       ease: 'none',
-      duration: 0.45,
+      duration: 0.55,
     },
-    0.3
+    0.15
   );
 
-  // Phase 3 (75% -> 100%): Telemetry equations lock in and glow
-  timeline.fromTo(
-    '.equation-card',
-    { y: 20, opacity: 0 },
-    { y: 0, opacity: 1, stagger: 0.05, ease: 'power2.out', duration: 0.25 },
-    0.75
+  // Gentle drift of the blueprint stage
+  timeline.to(
+    '.blueprint-stage',
+    {
+      y: -25,
+      scale: 1.04,
+      ease: 'power1.out',
+      duration: 0.3,
+    },
+    0.7
   );
 }
 

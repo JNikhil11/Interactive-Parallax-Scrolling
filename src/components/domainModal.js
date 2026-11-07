@@ -3,27 +3,27 @@ import { $, $$, setAriaExpanded } from '../utils/dom.js';
 const DOMAIN_DATA = {
   ai: {
     title: 'Artificial Intelligence',
-    subtitle: 'COGNITIVE SYSTEMS & AUTONOMOUS REASONING',
+    subtitle: 'Cognitive systems & autonomous reasoning',
     description: 'Neural architectures, autonomous reasoning, generative systems, and cognitive computing pushing the boundaries of machine intelligence. Experience AI competitions and cutting-edge algorithmic frontiers at Techfest.',
   },
   robotics: {
     title: 'Robotics',
-    subtitle: 'HUMANOID MECHATRONICS & SWARM KINEMATICS',
+    subtitle: 'Humanoid mechatronics & swarm kinematics',
     description: 'Humanoid kinematics, swarm autonomy, bio-inspired locomotion, and industrial mechatronics engineered for extreme environments. Witness international robotic battles and high-precision automation demonstrations.',
   },
   aerospace: {
     title: 'Aerospace',
-    subtitle: 'ORBITAL PROPULSION & SATELLITE AVIONICS',
+    subtitle: 'Orbital propulsion & satellite avionics',
     description: 'Orbital propulsion, autonomous flight dynamics, satellite constellations, and deep-space exploration vehicles. Exploring interplanetary telemetry, drone systems, and rocketry with leading aerospace visionaries.',
   },
   quantum: {
     title: 'Quantum Technology',
-    subtitle: 'SUPERCONDUCTING QUBITS & ENTANGLEMENT',
+    subtitle: 'Superconducting qubits & entanglement',
     description: 'Quantum cryptography, superconducting qubits, entanglement networks, and next-generation computational paradigms. Demystifying quantum key distribution and quantum algorithms shaping tomorrow.',
   },
   innovation: {
     title: 'Innovation & Engineering',
-    subtitle: 'SUSTAINABLE GRIDS & METAMATERIALS',
+    subtitle: 'Sustainable grids & advanced metamaterials',
     description: 'Sustainable energy grids, metamaterials, biotech interfaces, and breakthrough civil & mechanical systems. Where interdisciplinary science converts theoretical research into planetary-scale impact.',
   },
 };
@@ -31,7 +31,7 @@ const DOMAIN_DATA = {
 export function initDomainModal() {
   const panel = $('#domain-detail-panel');
   const closeBtn = $('#close-domain-panel');
-  const domainButtons = $$('.domain-node');
+  const domainButtons = $$('.domain-pill-btn');
   const titleEl = $('#domain-modal-title');
   const subtitleEl = $('#domain-modal-subtitle');
   const descEl = $('#domain-modal-desc');

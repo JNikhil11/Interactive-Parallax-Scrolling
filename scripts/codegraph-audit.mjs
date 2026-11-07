@@ -6,18 +6,6 @@ console.log('--- CODEGRAPH AST & SELECTOR INTEGRITY AUDIT ---');
 const ROOT_DIR = process.cwd();
 const html = fs.readFileSync(path.join(ROOT_DIR, 'index.html'), 'utf8');
 
-const modulesToCheck = [
-  'src/scenes/scene01Spark.js',
-  'src/scenes/scene02Imagination.js',
-  'src/scenes/scene03Creation.js',
-  'src/scenes/scene04Frontier.js',
-  'src/scenes/scene05Gathering.js',
-  'src/scenes/scene06Invitation.js',
-  'src/components/chapterHud.js',
-  'src/components/domainModal.js',
-  'src/components/explorerOverlay.js',
-];
-
 const requiredSelectors = [
   '#scene-spark',
   '#spark-sphere-canvas',
@@ -29,17 +17,15 @@ const requiredSelectors = [
   '.part-right-manipulator',
   '.part-central-core',
   '#scene-frontier',
-  '.domain-node',
+  '.domain-pill-btn',
   '#scene-gathering',
-  '.experience-card',
+  '.pillar-item',
   '#scene-invitation',
   '#cta-explore',
   '#cta-official',
-  '#chapter-hud',
-  '#hud-progress-fill',
   '#domain-detail-panel',
-  '#explorer-overlay',
   '#toggle-motion-btn',
+  '#energy-trail-canvas',
 ];
 
 let errors = 0;

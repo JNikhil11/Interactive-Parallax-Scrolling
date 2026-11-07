@@ -33,7 +33,7 @@ describe('Interactive Components & Accessibility State Transitions', () => {
   it('opens and closes the domain detail modal correctly', () => {
     initDomainModal();
 
-    const aiButton = document.querySelector('.domain-node[data-domain-key="ai"]');
+    const aiButton = document.querySelector('.domain-pill-btn[data-domain-key="ai"]');
     const panel = document.getElementById('domain-detail-panel');
     const modalTitle = document.getElementById('domain-modal-title');
     const closeBtn = document.getElementById('close-domain-panel');

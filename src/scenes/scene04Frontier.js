@@ -26,17 +26,17 @@ export function initScene04() {
   });
 
   timeline
-    .to('.earth-horizon', { rotation: 8, yPercent: -10, ease: 'none' }, 0)
+    .to('.earth-horizon-stage', { rotation: 6, yPercent: -8, ease: 'none' }, 0)
     .to('.satellite-layer', {
-      xPercent: 120,
-      yPercent: -40,
-      rotation: 15,
+      xPercent: 100,
+      yPercent: -35,
+      rotation: 12,
       ease: 'none',
     }, 0)
     .fromTo(
-      '.domain-node',
-      { y: 40, opacity: 0.4 },
-      { y: 0, opacity: 1, stagger: 0.06, ease: 'power1.out' },
+      '.domain-pill-btn',
+      { y: 30, opacity: 0.5 },
+      { y: 0, opacity: 1, stagger: 0.05, ease: 'power1.out' },
       0.15
     );
 }

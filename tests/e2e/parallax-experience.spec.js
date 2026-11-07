@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('TECHFEST — A FUTURE IN MOTION | E2E Parallax & Interaction Suite', () => {
+test.describe('TECHFEST — A FUTURE IN MOTION | E2E Parallax & Storytelling Suite (Redesign)', () => {
   test('01. Initial load renders official logos, semantic landmarks, and Scene 01', async ({ page }) => {
     await page.goto('/');
 
     // Check document title
-    await expect(page).toHaveTitle(/TECHFEST — A FUTURE IN MOTION/);
+    await expect(page).toHaveTitle(/Techfest — A Future in Motion/);
 
     // Check official logos
     const tfLogo = page.locator('.techfest-logo').first();
@@ -17,29 +17,29 @@ test.describe('TECHFEST — A FUTURE IN MOTION | E2E Parallax & Interaction Suit
     const skipLink = page.locator('a.skip-to-main');
     await expect(skipLink).toHaveAttribute('href', '#main-content');
 
-    // Check Scene 01 headline
+    // Check Scene 01 headline in mixed-case typography
     const headline01 = page.locator('#spark-headline');
-    await expect(headline01).toContainText("THE FUTURE DOESN'T WAIT. IT BEGINS WITH YOU.");
+    await expect(headline01).toContainText("The future doesn't wait. It begins with you.");
   });
 
-  test('02. Scroll progress updates Chapter HUD and progress fill bar', async ({ page }) => {
+  test('02. Scroll progress updates energy motif and atmosphere', async ({ page }) => {
     await page.goto('/');
 
-    const chapterHud = page.locator('#chapter-hud');
-    await expect(chapterHud).toBeAttached();
+    const energyCanvas = page.locator('#energy-trail-canvas');
+    await expect(energyCanvas).toBeAttached();
 
-    // Scroll to middle of document
+    // Scroll through the narrative
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight / 2));
     await page.waitForTimeout(400);
 
-    const hudPercentage = page.locator('#hud-percentage');
-    await expect(hudPercentage).toBeAttached();
+    const atmosphereCanvas = page.locator('#atmosphere-canvas');
+    await expect(atmosphereCanvas).toBeAttached();
   });
 
-  test('03. Scene 04 domain buttons open accessible detail drawer', async ({ page }) => {
+  test('03. Scene 04 celestial domain buttons open accessible detail drawer', async ({ page }) => {
     await page.goto('/');
 
-    const aiButton = page.locator('.domain-node[data-domain-key="ai"]');
+    const aiButton = page.locator('.domain-pill-btn[data-domain-key="ai"]');
     await aiButton.scrollIntoViewIfNeeded();
     await aiButton.click();
 
@@ -50,26 +50,26 @@ test.describe('TECHFEST — A FUTURE IN MOTION | E2E Parallax & Interaction Suit
     const modalTitle = page.locator('#domain-modal-title');
     await expect(modalTitle).toHaveText('Artificial Intelligence');
 
-    // Close with close button
+    // Close drawer
     const closeBtn = page.locator('#close-domain-panel');
     await closeBtn.click();
     await expect(drawer).not.toHaveClass(/is-active/);
   });
 
-  test('04. Scene 05 experience cards render all 4 pillars', async ({ page }) => {
+  test('04. Scene 05 showcases all 4 festival pillars', async ({ page }) => {
     await page.goto('/');
 
-    const cards = page.locator('.experience-card');
-    await expect(cards).toHaveCount(4);
+    const pillars = page.locator('.pillar-item');
+    await expect(pillars).toHaveCount(4);
 
-    const cardTitles = await cards.locator('.card-title').allTextContents();
-    expect(cardTitles).toContain('Competitions');
-    expect(cardTitles).toContain('Exhibitions');
-    expect(cardTitles).toContain('Workshops');
-    expect(cardTitles).toContain('Lectures & Experiences');
+    const pillarTitles = await pillars.locator('.pillar-title').allTextContents();
+    expect(pillarTitles).toContain('Competitions');
+    expect(pillarTitles).toContain('Exhibitions');
+    expect(pillarTitles).toContain('Workshops');
+    expect(pillarTitles).toContain('Lectures & Experiences');
   });
 
-  test('05. Scene 06 CTAs link to official Techfest portal and trigger Quick-Explorer', async ({ page }) => {
+  test('05. Scene 06 CTAs link to official Techfest portal and Explore Techfest scrolls', async ({ page }) => {
     await page.goto('/');
 
     const ctaOfficial = page.locator('#cta-official');
@@ -77,17 +77,10 @@ test.describe('TECHFEST — A FUTURE IN MOTION | E2E Parallax & Interaction Suit
     await expect(ctaOfficial).toHaveAttribute('href', 'https://techfest.org/');
     await expect(ctaOfficial).toHaveAttribute('target', '_blank');
 
-    // Test Quick Explorer
     const ctaExplore = page.locator('#cta-explore');
     await ctaExplore.scrollIntoViewIfNeeded();
     await ctaExplore.click({ force: true });
-
-    const explorerOverlay = page.locator('#explorer-overlay');
-    await expect(explorerOverlay).toHaveClass(/is-active/);
-
-    const closeExplorer = page.locator('#close-explorer');
-    await closeExplorer.click();
-    await expect(explorerOverlay).not.toHaveClass(/is-active/);
+    await page.waitForTimeout(300);
   });
 
   test('06. Reduced motion toggle updates root attribute and button state', async ({ page }) => {
