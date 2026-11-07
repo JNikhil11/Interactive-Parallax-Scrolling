@@ -1,0 +1,129 @@
+{
+  "project": "TECHFEST — A FUTURE IN MOTION",
+  "theme": "Interactive Parallax Storytelling Experience",
+  "context": "Techfest, IIT Bombay (Asia's Largest Science & Technology Festival)",
+  "disclaimer": "Independent Creative Concept for Techfest, IIT Bombay",
+  "official_url": "https://techfest.org/",
+  "dates": "16th - 18th December, 2026",
+  "chapters": [
+    {
+      "id": "01",
+      "slug": "scene-spark",
+      "title": "THE SPARK",
+      "headline": "THE FUTURE DOESN'T WAIT. IT BEGINS WITH YOU.",
+      "subtext": "Every extraordinary invention begins with an extraordinary question.",
+      "bg_primary": "#0A1128",
+      "bg_secondary": "#111D4A",
+      "accent_primary": "#00E5FF",
+      "accent_secondary": "#FFC107"
+    },
+    {
+      "id": "02",
+      "slug": "scene-imagination",
+      "title": "THE IMAGINATION",
+      "headline": "BEFORE THE INVENTION, THERE WAS AN IDEA.",
+      "subtext": "Curiosity transforms possibilities into plans. Imagination gives technology its first shape.",
+      "bg_primary": "#1A237E",
+      "bg_secondary": "#0D47A1",
+      "accent_primary": "#E0F7FA",
+      "accent_secondary": "#00E5FF"
+    },
+    {
+      "id": "03",
+      "slug": "scene-creation",
+      "title": "THE CREATION",
+      "headline": "IDEAS ARE NOTHING WITHOUT THE COURAGE TO BUILD.",
+      "subtext": "From the first prototype to complex machines, engineering turns imagination into reality.",
+      "bg_primary": "#0F172A",
+      "bg_secondary": "#1E293B",
+      "accent_primary": "#00B4D8",
+      "accent_secondary": "#FF6B35"
+    },
+    {
+      "id": "04",
+      "slug": "scene-frontier",
+      "title": "THE FRONTIER",
+      "headline": "THERE ARE NO FINISH LINES TO HUMAN CURIOSITY.",
+      "subtext": "From artificial intelligence to robotics, aerospace and emerging sciences, the next frontier is waiting to be explored.",
+      "bg_primary": "#311B92",
+      "bg_secondary": "#4A148C",
+      "accent_primary": "#FF5722",
+      "accent_secondary": "#00E5FF"
+    },
+    {
+      "id": "05",
+      "slug": "scene-gathering",
+      "title": "THE GATHERING",
+      "headline": "WHERE THE WORLD COMES TO BUILD TOMORROW.",
+      "subtext": "Ideas become more powerful when minds meet. Experience the energy of competitions, demonstrations, exhibitions and learning.",
+      "bg_primary": "#1E0B36",
+      "bg_secondary": "#3B0764",
+      "accent_primary": "#00E5FF",
+      "accent_secondary": "#FFB703"
+    },
+    {
+      "id": "06",
+      "slug": "scene-invitation",
+      "title": "THE INVITATION",
+      "headline": "THE NEXT REVOLUTION NEEDS YOU.",
+      "subtext": "Don't just witness the future. Become part of the people creating it.",
+      "bg_primary": "#FF5722",
+      "bg_secondary": "#FFD166",
+      "accent_primary": "#FFDDD2",
+      "accent_secondary": "#0A1128"
+    }
+  ],
+  "domains": [
+    {
+      "id": "ai",
+      "name": "Artificial Intelligence",
+      "description": "Neural architectures, autonomous reasoning, generative systems, and cognitive computing pushing the boundaries of machine intelligence."
+    },
+    {
+      "id": "robotics",
+      "name": "Robotics",
+      "description": "Humanoid kinematics, swarm autonomy, bio-inspired locomotion, and industrial mechatronics engineered for extreme environments."
+    },
+    {
+      "id": "aerospace",
+      "name": "Aerospace",
+      "description": "Orbital propulsion, autonomous flight dynamics, satellite constellations, and deep-space exploration vehicles."
+    },
+    {
+      "id": "quantum",
+      "name": "Quantum Technology",
+      "description": "Quantum cryptography, superconducting qubits, entanglement networks, and next-generation computational paradigms."
+    },
+    {
+      "id": "innovation",
+      "name": "Innovation & Engineering",
+      "description": "Sustainable energy grids, metamaterials, biotech interfaces, and breakthrough civil & mechanical systems."
+    }
+  ],
+  "experiences": [
+    {
+      "id": "competitions",
+      "title": "Competitions",
+      "tagline": "TEST YOUR ENGINEERING METTLE",
+      "description": "High-stakes national and international challenges across robotics, coding, aerospace, and design where innovators compete to solve real-world problems."
+    },
+    {
+      "id": "exhibitions",
+      "title": "Exhibitions",
+      "tagline": "WITNESS BREAKTHROUGH PROTOTYPES",
+      "description": "Global showcases of cutting-edge humanoid robots, defense technology, autonomous vehicles, and research demonstrations from pioneering labs."
+    },
+    {
+      "id": "workshops",
+      "title": "Workshops",
+      "tagline": "MASTER EMERGING TECHNOLOGIES",
+      "description": "Hands-on technical intensives led by industry practitioners covering AI, quantum computing, embedded systems, cybersecurity, and financial engineering."
+    },
+    {
+      "id": "lectures",
+      "title": "Lectures & Experiences",
+      "tagline": "IGNITE PERSPECTIVES & WONDER",
+      "description": "Keynote addresses from global laureates, scientific visionaries, and tech leaders alongside electrifying night-time technoholix performances and summits."
+    }
+  ]
+}

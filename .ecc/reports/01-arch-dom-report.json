@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-11-07T05:48:21.947Z",
+  "status": "PASSED",
+  "landmarks": {
+    "banner": true,
+    "main": true,
+    "navigation": true,
+    "contentinfo": true,
+    "skipLink": true
+  },
+  "headingHierarchy": {
+    "h1Count": 1,
+    "h2Count": 5,
+    "h3Count": 9,
+    "validOrder": true
+  },
+  "responsiveSupport": {
+    "viewports": [
+      "320px",
+      "375px",
+      "768px",
+      "1024px",
+      "1440px",
+      "1920px",
+      "3840px"
+    ],
+    "zeroHorizontalOverflow": true,
+    "dvhUnitsEnforced": true
+  }
+}

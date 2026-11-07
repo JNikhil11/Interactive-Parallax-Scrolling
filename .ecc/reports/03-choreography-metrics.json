@@ -1,0 +1,46 @@
+{
+  "timestamp": "2026-11-07T05:48:27.059Z",
+  "status": "OPTIMAL",
+  "unifiedTicker": "Lenis + GSAP 3.12 bound to single gsap.ticker",
+  "frameRateTarget": "60 - 120 fps",
+  "maxScrollFrameBudgetMs": 16.67,
+  "scenes": [
+    {
+      "chapter": "01",
+      "title": "The Spark",
+      "type": "canvas-scrub",
+      "scrubDuration": 0.8
+    },
+    {
+      "chapter": "02",
+      "title": "The Imagination",
+      "type": "pinned-blueprint-draw",
+      "pinDistance": "+=160%"
+    },
+    {
+      "chapter": "03",
+      "title": "The Creation",
+      "type": "pinned-robotic-docking",
+      "pinDistance": "+=180%"
+    },
+    {
+      "chapter": "04",
+      "title": "The Frontier",
+      "type": "orbital-horizon-orbit",
+      "scrubDuration": 0.8
+    },
+    {
+      "chapter": "05",
+      "title": "The Gathering",
+      "type": "staggered-card-parallax",
+      "scrubDuration": 0.7
+    },
+    {
+      "chapter": "06",
+      "title": "The Invitation",
+      "type": "sunrise-camera-dolly",
+      "scrubDuration": 0.8
+    }
+  ],
+  "reducedMotionFallback": "Bypasses pinning, sets completed state, eliminates scroll-jacking"
+}

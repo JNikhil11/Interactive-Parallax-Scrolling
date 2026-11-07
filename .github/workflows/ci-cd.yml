@@ -1,0 +1,45 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-verify:
+    name: Lint, Test & Self-Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Forensic Asset Verification
+        run: npm run verify:assets
+
+      - name: CodeGraph AST & Selector Integrity
+        run: npm run audit:codegraph
+
+      - name: Run Vitest Unit Suite
+        run: npm run test:unit
+
+      - name: Production Build
+        run: npm run build
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright E2E Parallax Suite
+        run: npm run test:e2e
+
+      - name: 100-Point Autonomous Quality Gate
+        run: npm run self:audit

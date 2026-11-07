@@ -1,0 +1,96 @@
+/* ==========================================================================
+   DESIGN TOKENS & SYSTEM VARIABLES
+   TECHFEST — A FUTURE IN MOTION
+   ========================================================================== */
+
+:root {
+  /* Fonts */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'DM Mono', monospace;
+
+  /* Dynamic Interpolated Background & Accent State */
+  --bg-current-primary: #0A1128;
+  --bg-current-secondary: #111D4A;
+  --accent-current-primary: #00E5FF;
+  --accent-current-secondary: #FFC107;
+
+  /* Scene-specific palette constants */
+  --scene01-bg-primary: #0A1128;
+  --scene01-bg-secondary: #111D4A;
+  --scene01-accent-primary: #00E5FF;
+  --scene01-accent-secondary: #FFC107;
+
+  --scene02-bg-primary: #1A237E;
+  --scene02-bg-secondary: #0D47A1;
+  --scene02-accent-primary: #E0F7FA;
+  --scene02-accent-secondary: #00E5FF;
+
+  --scene03-bg-primary: #0F172A;
+  --scene03-bg-secondary: #1E293B;
+  --scene03-accent-primary: #00B4D8;
+  --scene03-accent-secondary: #FF6B35;
+
+  --scene04-bg-primary: #311B92;
+  --scene04-bg-secondary: #4A148C;
+  --scene04-accent-primary: #FF5722;
+  --scene04-accent-secondary: #00E5FF;
+
+  --scene05-bg-primary: #1E0B36;
+  --scene05-bg-secondary: #3B0764;
+  --scene05-accent-primary: #00E5FF;
+  --scene05-accent-secondary: #FFB703;
+
+  --scene06-bg-primary: #FF5722;
+  --scene06-bg-secondary: #FFD166;
+  --scene06-accent-primary: #FFDDD2;
+  --scene06-accent-secondary: #0A1128;
+
+  /* Neutral Spectrum */
+  --color-white: #FFFFFF;
+  --color-ink-dark: #0A1128;
+  --color-text-main: rgba(255, 255, 255, 0.94);
+  --color-text-muted: rgba(255, 255, 255, 0.72);
+  --color-text-subtle: rgba(255, 255, 255, 0.48);
+  --color-border-glass: rgba(255, 255, 255, 0.12);
+  --color-bg-glass: rgba(10, 17, 40, 0.65);
+  --color-bg-glass-card: rgba(255, 255, 255, 0.05);
+
+  /* Fluid Typography Scale (320px to 1920px viewport) */
+  --text-xs: clamp(0.75rem, 0.70rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.82rem + 0.30vw, 1.05rem);
+  --text-base: clamp(1.05rem, 0.96rem + 0.45vw, 1.35rem);
+  --text-lg: clamp(1.25rem, 1.10rem + 0.75vw, 1.75rem);
+  --text-xl: clamp(1.60rem, 1.30rem + 1.50vw, 2.50rem);
+  --text-display-md: clamp(2.00rem, 1.50rem + 2.50vw, 3.75rem);
+  --text-display-lg: clamp(2.50rem, 1.75rem + 3.75vw, 5.25rem);
+
+  /* Fluid Spacing Scale */
+  --space-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.875rem);
+  --space-sm: clamp(1.0rem, 0.8rem + 1.0vw, 1.75rem);
+  --space-md: clamp(1.75rem, 1.3rem + 2.2vw, 3.25rem);
+  --space-lg: clamp(3.0rem, 2.0rem + 5.0vw, 6.5rem);
+  --space-xl: clamp(5.0rem, 3.5rem + 7.5vw, 11.0rem);
+
+  /* Radii & Shadows */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+  --shadow-glow-cyan: 0 0 35px rgba(0, 229, 255, 0.4);
+  --shadow-glow-amber: 0 0 35px rgba(255, 193, 7, 0.4);
+  --shadow-glow-orange: 0 0 45px rgba(255, 87, 34, 0.5);
+
+  /* Layout Constants */
+  --container-max-width: 1440px;
+  --header-height: 72px;
+  --z-atmosphere: 0;
+  --z-plane-0: 1;
+  --z-plane-1: 2;
+  --z-plane-2: 4;
+  --z-plane-3: 6;
+  --z-plane-4: 8;
+  --z-hud: 50;
+  --z-header: 60;
+  --z-overlay: 100;
+}

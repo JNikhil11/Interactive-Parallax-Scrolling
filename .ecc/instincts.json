@@ -1,0 +1,39 @@
+{
+  "project": "TECHFEST — A FUTURE IN MOTION",
+  "version": "1.0.0",
+  "verificationGates": {
+    "zeroPlaceholders": {
+      "enabled": true,
+      "disallowedPatterns": ["TODO", "FIXME", "XXX", "TBD", "placeholder"]
+    },
+    "typeAndLintChecking": {
+      "enabled": true,
+      "enforceZeroErrors": true
+    },
+    "unitTestCoverage": {
+      "enabled": true,
+      "minimumLineCoverage": 90
+    },
+    "e2eParallaxVerification": {
+      "enabled": true,
+      "framework": "playwright",
+      "requiredChecks": [
+        "layerVelocityOrdering",
+        "pinScrubReversibility",
+        "colorMorphContinuity",
+        "reducedMotionDegradation",
+        "responsiveZeroHorizontalOverflow"
+      ]
+    },
+    "accessibilityStandard": {
+      "level": "WCAG 2.2 AA",
+      "landmarksRequired": ["banner", "main", "navigation", "contentinfo"],
+      "headingHierarchy": "h1 -> h2 -> h3 strictly ordered"
+    },
+    "securityAudits": {
+      "semgrep": "passed",
+      "noExternalArbitraryScripts": true,
+      "strictCSP": true
+    }
+  }
+}

@@ -1,0 +1,16 @@
+# CodeRabbit AI automated review configuration
+version: '2'
+language: en-US
+tone_instructions: 'You are an adversarial lead architect and security auditor. Verify that 6 scenes exist, zero placeholders exist, GSAP timelines use unified ticker, WCAG 2.2 AA accessibility is honored, and no broken links exist.'
+reviews:
+  profile: assertive
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  auto_review:
+    enabled: true
+    drafts: false
+chat:
+  auto_reply: true

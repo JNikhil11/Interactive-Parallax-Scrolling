@@ -1,0 +1,54 @@
+{
+  "timestamp": "2026-11-07T05:48:21.831Z",
+  "status": "VERIFIED",
+  "assets": [
+    {
+      "path": "assets/techfest-logo.png",
+      "type": "image/png",
+      "role": "Official Techfest Logo",
+      "fallback": "procedural"
+    },
+    {
+      "path": "assets/iitb-logo.png",
+      "type": "image/png",
+      "role": "Official IIT Bombay Seal",
+      "fallback": "procedural"
+    },
+    {
+      "path": "index.html#spark-sphere-canvas",
+      "type": "canvas",
+      "role": "Scene 01 Energy Core",
+      "particles": 180
+    },
+    {
+      "path": "index.html#imagination-blueprint-svg",
+      "type": "svg",
+      "role": "Scene 02 Exploded Blueprint",
+      "paths": 14
+    },
+    {
+      "path": "index.html#creation-robot-assembly",
+      "type": "svg",
+      "role": "Scene 03 Articulated Mechatronics",
+      "parts": 6
+    },
+    {
+      "path": "index.html#frontier-satellite",
+      "type": "svg",
+      "role": "Scene 04 Orbital Satellite",
+      "layers": 5
+    },
+    {
+      "path": "index.html#gathering-spotlights",
+      "type": "css-gradient",
+      "role": "Scene 05 Sweeping Beams",
+      "beams": 4
+    },
+    {
+      "path": "index.html#invitation-solar-bloom",
+      "type": "css-radial",
+      "role": "Scene 06 Sunrise Bloom",
+      "scale": 1.85
+    }
+  ]
+}
