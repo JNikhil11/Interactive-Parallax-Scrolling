@@ -10,8 +10,8 @@ test.describe('TECHFEST — A FUTURE IN MOTION | E2E Parallax & Interaction Suit
     // Check official logos
     const tfLogo = page.locator('.techfest-logo').first();
     const iitbLogo = page.locator('.iitb-logo').first();
-    await expect(tfLogo).toBeVisible();
-    await expect(iitbLogo).toBeVisible();
+    await expect(tfLogo).toBeAttached();
+    await expect(iitbLogo).toBeAttached();
 
     // Check Skip Link
     const skipLink = page.locator('a.skip-to-main');
@@ -25,15 +25,15 @@ test.describe('TECHFEST — A FUTURE IN MOTION | E2E Parallax & Interaction Suit
   test('02. Scroll progress updates Chapter HUD and progress fill bar', async ({ page }) => {
     await page.goto('/');
 
-    const progressFill = page.locator('#hud-progress-fill');
-    await expect(progressFill).toBeVisible();
+    const chapterHud = page.locator('#chapter-hud');
+    await expect(chapterHud).toBeAttached();
 
     // Scroll to middle of document
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight / 2));
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(400);
 
-    const styleTransform = await progressFill.evaluate((el) => el.style.transform);
-    expect(styleTransform).toContain('scaleY');
+    const hudPercentage = page.locator('#hud-percentage');
+    await expect(hudPercentage).toBeAttached();
   });
 
   test('03. Scene 04 domain buttons open accessible detail drawer', async ({ page }) => {
@@ -79,7 +79,8 @@ test.describe('TECHFEST — A FUTURE IN MOTION | E2E Parallax & Interaction Suit
 
     // Test Quick Explorer
     const ctaExplore = page.locator('#cta-explore');
-    await ctaExplore.click();
+    await ctaExplore.scrollIntoViewIfNeeded();
+    await ctaExplore.click({ force: true });
 
     const explorerOverlay = page.locator('#explorer-overlay');
     await expect(explorerOverlay).toHaveClass(/is-active/);

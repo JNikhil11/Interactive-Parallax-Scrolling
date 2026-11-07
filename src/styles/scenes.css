@@ -506,6 +506,9 @@
   justify-content: center;
   gap: 1.25rem;
   margin-top: var(--space-md);
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
 }
 
 .btn-cta {
