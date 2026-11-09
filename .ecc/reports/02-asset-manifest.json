@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-07T06:41:22.135Z",
+  "timestamp": "2026-11-09T07:45:12.009Z",
   "status": "VERIFIED",
   "assets": [
     {
@@ -33,10 +33,10 @@
       "paths": 14
     },
     {
-      "path": "index.html#creation-robot-assembly",
-      "type": "svg",
-      "role": "Scene 03 Articulated Mechatronics",
-      "parts": 6
+      "path": "index.html#exosuit-3d-canvas",
+      "type": "webgl-canvas",
+      "role": "Scene 03 Cinematic 3D Powered Exosuit Assembly",
+      "stages": 15
     },
     {
       "path": "index.html#frontier-satellite",

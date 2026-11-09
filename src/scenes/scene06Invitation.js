@@ -21,7 +21,7 @@ export function initScene06() {
       trigger: '#scene-invitation',
       start: 'top bottom',
       end: 'bottom bottom',
-      scrub: 0.8,
+      scrub: true, // Immediate direct scroll synchronization
     },
   });
 
@@ -34,7 +34,7 @@ export function initScene06() {
     )
     .fromTo(
       '.editorial-story',
-      { y: 40, opacity: 0.6 },
+      { y: 30, opacity: 0.6 },
       { y: 0, opacity: 1, ease: 'power1.out' },
       0.15
     );

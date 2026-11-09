@@ -131,32 +131,110 @@
 }
 
 /* --------------------------------------------------------------------------
-   03 / THE CREATION
+   03 / THE CREATION (Realistic 3D Powered Exosuit Assembly)
    -------------------------------------------------------------------------- */
 .scene-creation {
-  background: radial-gradient(circle at 40% 60%, rgba(24, 35, 55, 0.65) 0%, rgba(14, 23, 38, 1) 100%);
+  background: radial-gradient(circle at 50% 50%, rgba(20, 24, 38, 0.7) 0%, rgba(10, 13, 22, 1) 100%);
+  position: relative;
+  overflow: hidden;
 }
 
 .creation-stage-wrap {
   position: relative;
   width: 100%;
-  max-width: 860px;
-  margin: var(--space-md) auto 0;
+  max-width: 900px;
+  margin: var(--space-sm) auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.exosuit-canvas-container {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  height: clamp(480px, 62vh, 640px);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.robot-assembly-svg {
+#exosuit-3d-canvas {
   width: 100%;
-  height: auto;
-  max-height: 480px;
-  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.5));
+  height: 100%;
+  display: block;
+  outline: none;
+  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.65));
 }
 
-.robot-part {
-  transition: transform 0.1s linear, opacity 0.1s linear;
-  transform-origin: center;
+/* Real-Time Assembly Telemetry HUD */
+.exosuit-telemetry-hud {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  pointer-events: none;
+  z-index: 10;
+  width: 90%;
+  max-width: 380px;
+}
+
+.suit-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(14, 18, 28, 0.75);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+}
+
+.suit-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00F5FF;
+  box-shadow: 0 0 8px #00F5FF;
+  animation: pulseDot 1.6s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+#suit-stage-indicator {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #E0F7FA;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+#suit-progress-bar-container {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+#suit-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00E5FF, #FFC107, #FF5722);
+  border-radius: 9999px;
+  transition: width 0.06s linear;
 }
 
 .hotspot-node-group {

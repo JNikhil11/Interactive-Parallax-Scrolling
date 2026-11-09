@@ -24,7 +24,7 @@ const assetManifest = {
     { path: 'index.html#spark-sphere-canvas', type: 'canvas', role: 'Scene 01 Energy Core', particles: 140 },
     { path: 'index.html#energy-trail-canvas', type: 'canvas', role: 'Recurring Energy Motif & Light Trail', waypoints: 6 },
     { path: 'index.html#imagination-blueprint-svg', type: 'svg', role: 'Scene 02 Exploded Blueprint', paths: 14 },
-    { path: 'index.html#creation-robot-assembly', type: 'svg', role: 'Scene 03 Articulated Mechatronics', parts: 6 },
+    { path: 'index.html#exosuit-3d-canvas', type: 'webgl-canvas', role: 'Scene 03 Cinematic 3D Powered Exosuit Assembly', stages: 15 },
     { path: 'index.html#frontier-satellite', type: 'svg', role: 'Scene 04 Orbital Satellite', layers: 5 },
     { path: 'index.html#gathering-spotlights', type: 'css-gradient', role: 'Scene 05 Sweeping Beams', beams: 4 },
   ],

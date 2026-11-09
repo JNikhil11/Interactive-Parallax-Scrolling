@@ -11,6 +11,7 @@ let particles = [];
 let sceneTrigger = null;
 let observer = null;
 let isVisible = true;
+let resizeHandler = null;
 
 export function initScene01() {
   destroyScene01();
@@ -28,16 +29,17 @@ export function initScene01() {
   }
 
   resizeCanvas();
-  window.addEventListener('resize', resizeCanvas, { passive: true });
+  resizeHandler = resizeCanvas;
+  window.addEventListener('resize', resizeHandler, { passive: true });
 
   particles = [];
-  const particleCount = window.innerWidth < 768 ? 50 : 140;
+  const particleCount = window.innerWidth < 768 ? 40 : 100;
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       angle: Math.random() * Math.PI * 2,
-      radius: Math.random() * 110 + 20,
+      radius: Math.random() * 105 + 20,
       speed: (Math.random() * 0.015 + 0.005) * (Math.random() > 0.5 ? 1 : -1),
-      size: Math.random() * 2.2 + 0.8,
+      size: Math.random() * 2.0 + 0.8,
       color: Math.random() > 0.4 ? '#00E5FF' : '#FFC107',
       alpha: Math.random() * 0.7 + 0.3,
     });
@@ -68,7 +70,9 @@ export function initScene01() {
       ctx.fill();
 
       // Orbital sparks
-      for (let p of particles) {
+      const pCount = particles.length;
+      for (let i = 0; i < pCount; i++) {
+        const p = particles[i];
         p.angle += p.speed;
         const px = cx + Math.cos(p.angle) * p.radius;
         const py = cy + Math.sin(p.angle) * (p.radius * 0.45);
@@ -87,34 +91,39 @@ export function initScene01() {
 
   renderSphere();
 
-  // Canvas visibility gating
-  observer = new IntersectionObserver(([entry]) => {
-    isVisible = entry.isIntersecting;
-  }, { threshold: 0.05 });
+  // Canvas visibility gating (saves 100% GPU when user is in other scenes)
   const section = document.getElementById('scene-spark');
-  if (section) observer.observe(section);
+  if (section) {
+    observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.02 }
+    );
+    observer.observe(section);
+  }
 
   if (isReducedMotionPreferred()) {
     return;
   }
 
-  // Camera moves toward energy source on scroll
+  // Camera moves toward energy source with direct scroll sync (zero trailing lag)
   const timeline = gsap.timeline({
     scrollTrigger: {
       trigger: '#scene-spark',
       start: 'top top',
       end: 'bottom top',
-      scrub: 0.8,
+      scrub: true, // Immediate direct synchronization
     },
   });
 
   timeline
     .to('.ring-outer', { rotation: 90, scale: 1.5, ease: 'none' }, 0)
     .to('.ring-mid', { rotation: -70, scale: 1.35, ease: 'none' }, 0)
-    .to('.spark-illustration-stage', { scale: 2.2, yPercent: 15, ease: 'power1.inOut' }, 0)
-    .to('#spark-headline', { yPercent: -40, opacity: 0, ease: 'power2.in' }, 0)
-    .to('.editorial-subtext', { yPercent: -30, opacity: 0, ease: 'power2.in' }, 0)
-    .to('.scroll-hint', { opacity: 0, ease: 'power1.in' }, 0);
+    .to('.spark-illustration-stage', { scale: 2.0, yPercent: 12, ease: 'none' }, 0)
+    .to('#spark-headline', { yPercent: -35, opacity: 0, ease: 'none' }, 0)
+    .to('.editorial-subtext', { yPercent: -25, opacity: 0, ease: 'none' }, 0)
+    .to('.scroll-hint', { opacity: 0, ease: 'none' }, 0);
 
   sceneTrigger = timeline.scrollTrigger;
 }
@@ -131,5 +140,9 @@ export function destroyScene01() {
   if (observer) {
     observer.disconnect();
     observer = null;
+  }
+  if (resizeHandler) {
+    window.removeEventListener('resize', resizeHandler);
+    resizeHandler = null;
   }
 }

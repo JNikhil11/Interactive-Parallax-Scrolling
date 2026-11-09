@@ -36,6 +36,19 @@ test.describe('TECHFEST — A FUTURE IN MOTION | E2E Parallax & Storytelling Sui
     await expect(atmosphereCanvas).toBeAttached();
   });
 
+  test('02b. Scene 03 renders realistic 3D powered exosuit assembly canvas and telemetry HUD', async ({ page }) => {
+    await page.goto('/');
+
+    const exosuitContainer = page.locator('#exosuit-container');
+    const exosuitCanvas = page.locator('#exosuit-3d-canvas');
+    const stageIndicator = page.locator('#suit-stage-indicator');
+
+    await expect(exosuitContainer).toBeAttached();
+    await expect(exosuitCanvas).toBeAttached();
+    await expect(stageIndicator).toBeAttached();
+    await expect(stageIndicator).toContainText(/01 \/\/|STAGE/i);
+  });
+
   test('03. Scene 04 celestial domain buttons open accessible detail drawer', async ({ page }) => {
     await page.goto('/');
 

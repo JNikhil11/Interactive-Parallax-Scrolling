@@ -45,44 +45,33 @@ export function initScene02() {
     scrollTrigger: {
       trigger: '#scene-imagination',
       start: 'top top',
-      end: '+=150%',
+      end: '+=130%',
       pin: true,
-      scrub: 1,
+      scrub: true, // Immediate direct scroll synchronization
       anticipatePin: 1,
     },
   });
 
-  // Subtle grid reveal
+  // Grid reveal
   timeline.fromTo(
     '.blueprint-canvas-layer',
     { opacity: 0.1 },
-    { opacity: 0.7, ease: 'none', duration: 0.25 },
+    { opacity: 0.7, ease: 'none', duration: 0.2 },
     0
   );
 
-  // Progressive drawing of blueprint strokes
-  timeline.to(
-    paths,
-    {
-      strokeDashoffset: 0,
-      stagger: 0.02,
-      ease: 'none',
-      duration: 0.55,
-    },
-    0.15
-  );
-
-  // Gentle drift of the blueprint stage
-  timeline.to(
-    '.blueprint-stage',
-    {
-      y: -25,
-      scale: 1.04,
-      ease: 'power1.out',
-      duration: 0.3,
-    },
-    0.7
-  );
+  // Progressive SVG line drafting
+  paths.forEach((pathEl, idx) => {
+    timeline.to(
+      pathEl,
+      {
+        strokeDashoffset: 0,
+        duration: 0.35,
+        ease: 'none',
+      },
+      idx * 0.04
+    );
+  });
 }
 
 export function destroyScene02() {

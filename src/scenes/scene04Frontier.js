@@ -21,22 +21,26 @@ export function initScene04() {
       trigger: '#scene-frontier',
       start: 'top bottom',
       end: 'bottom top',
-      scrub: 0.8,
+      scrub: true, // Immediate direct scroll synchronization
     },
   });
 
   timeline
     .to('.earth-horizon-stage', { rotation: 6, yPercent: -8, ease: 'none' }, 0)
-    .to('.satellite-layer', {
-      xPercent: 100,
-      yPercent: -35,
-      rotation: 12,
-      ease: 'none',
-    }, 0)
+    .to(
+      '.satellite-layer',
+      {
+        xPercent: 100,
+        yPercent: -35,
+        rotation: 12,
+        ease: 'none',
+      },
+      0
+    )
     .fromTo(
       '.domain-pill-btn',
-      { y: 30, opacity: 0.5 },
-      { y: 0, opacity: 1, stagger: 0.05, ease: 'power1.out' },
+      { y: 25, opacity: 0.6 },
+      { y: 0, opacity: 1, stagger: 0.04, ease: 'power1.out' },
       0.15
     );
 }

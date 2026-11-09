@@ -1,59 +1,58 @@
-import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-let lenisInstance = null;
-let tickerFn = null;
+let scrollHandler = null;
+let virtualLenis = null;
 
+/**
+ * High-Performance Direct Scroll Controller
+ * Eliminates artificial wheel latency and numerical scrub lag,
+ * ensuring immediate 1:1 hardware-accelerated scroll responsiveness.
+ */
 export function initSmoothScroll(prefersReducedMotion = false) {
-  if (prefersReducedMotion) {
-    ScrollTrigger.defaults({ markers: false });
-    return null;
-  }
+  destroySmoothScroll();
 
-  if (lenisInstance) {
-    destroySmoothScroll();
-  }
+  ScrollTrigger.defaults({ markers: false });
 
-  lenisInstance = new Lenis({
-    duration: 1.15,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    orientation: 'vertical',
-    gestureOrientation: 'vertical',
-    smoothWheel: true,
-    wheelMultiplier: 1.0,
-    touchMultiplier: 1.8,
-    infinite: false,
-  });
+  // Direct 1:1 native scroll synchronization with zero input lag
+  scrollHandler = () => {
+    ScrollTrigger.update();
+  };
+  window.addEventListener('scroll', scrollHandler, { passive: true });
 
-  lenisInstance.on('scroll', ScrollTrigger.update);
-
-  tickerFn = (time) => {
-    lenisInstance.raf(time * 1000);
+  virtualLenis = {
+    scrollTo: (target) => {
+      if (!target) return;
+      let el = target;
+      if (typeof target === 'string') {
+        el = document.querySelector(target);
+      }
+      if (el && el.scrollIntoView) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else if (typeof target === 'number') {
+        window.scrollTo({ top: target, behavior: 'smooth' });
+      }
+    },
+    raf: () => {},
+    destroy: destroySmoothScroll,
   };
 
-  gsap.ticker.add(tickerFn);
-  gsap.ticker.lagSmoothing(0);
-
   return {
-    lenis: lenisInstance,
+    lenis: virtualLenis,
     destroy: destroySmoothScroll,
   };
 }
 
 export function getLenis() {
-  return lenisInstance;
+  return virtualLenis;
 }
 
 export function destroySmoothScroll() {
-  if (tickerFn) {
-    gsap.ticker.remove(tickerFn);
-    tickerFn = null;
+  if (scrollHandler) {
+    window.removeEventListener('scroll', scrollHandler);
+    scrollHandler = null;
   }
-  if (lenisInstance) {
-    lenisInstance.destroy();
-    lenisInstance = null;
-  }
+  virtualLenis = null;
 }

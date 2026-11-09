@@ -138,59 +138,41 @@
         <p class="editorial-subtext">From the first prototype to complex machines, engineering turns imagination into reality.</p>
       </div>
 
-      <!-- Illustrated Articulated Robotics Stage -->
-      <div class="creation-stage-wrap parallax-plane plane-2" data-parallax-layer="layer-2" data-mouse-depth="16">
-        <svg id="creation-robot-assembly" class="robot-assembly-svg" viewBox="0 0 600 480" role="img" aria-label="Articulated industrial robotic system assembling onto central chassis">
-          <!-- Chassis Base -->
-          <g class="robot-part part-lower-chassis-base">
-            <rect x="180" y="370" width="240" height="40" rx="8" fill="#182337" stroke="#38BDF8" stroke-width="2" />
-            <line x1="210" y1="410" x2="390" y2="410" stroke="#FB923C" stroke-width="3" />
-          </g>
-          <!-- Central Power Core -->
-          <g class="robot-part part-central-core">
-            <rect x="235" y="210" width="130" height="150" rx="12" fill="#0E1726" stroke="#38BDF8" stroke-width="2.5" />
-            <circle cx="300" cy="285" r="38" fill="#38BDF8" opacity="0.25" />
-            <circle cx="300" cy="285" r="18" fill="#FB923C" />
-          </g>
-          <!-- Sensor Head -->
-          <g class="robot-part part-upper-sensor-head">
-            <polygon points="260,180 340,180 320,120 280,120" fill="#182337" stroke="#38BDF8" stroke-width="2" />
-            <circle cx="300" cy="150" r="7" fill="#38BDF8" />
-          </g>
-          <!-- Left Manipulator Arm -->
-          <g class="robot-part part-left-manipulator">
-            <path d="M 235 250 L 120 210 L 70 280" fill="none" stroke="#94A3B8" stroke-width="10" stroke-linecap="round" />
-            <circle cx="120" cy="210" r="12" fill="#FB923C" />
-            <circle cx="70" cy="280" r="9" fill="#38BDF8" />
-          </g>
-          <!-- Right Manipulator Arm -->
-          <g class="robot-part part-right-manipulator">
-            <path d="M 365 250 L 480 210 L 530 280" fill="none" stroke="#94A3B8" stroke-width="10" stroke-linecap="round" />
-            <circle cx="480" cy="210" r="12" fill="#FB923C" />
-            <circle cx="530" cy="280" r="9" fill="#38BDF8" />
-          </g>
-          <!-- HUD Conduit Overlay -->
-          <g class="robot-part part-circuit-hud-overlay">
-            <circle cx="300" cy="285" r="85" fill="none" stroke="#38BDF8" stroke-width="1" stroke-dasharray="4 8" />
-            <path d="M 190 170 L 160 130 H 100" fill="none" stroke="#38BDF8" stroke-width="1.5" />
-            <path d="M 410 170 L 440 130 H 500" fill="none" stroke="#38BDF8" stroke-width="1.5" />
-          </g>
-        </svg>
+      <!-- Realistic 3D Powered Exosuit Assembly Stage -->
+      <div class="creation-stage-wrap parallax-plane plane-2" data-parallax-layer="layer-2" data-mouse-depth="12">
+        <div id="exosuit-container" class="exosuit-canvas-container" role="img" aria-label="Cinematic 3D powered exosuit assembling rapidly around human figure">
+          <canvas id="exosuit-3d-canvas"></canvas>
+
+          <!-- Real-Time Assembly Telemetry HUD -->
+          <div class="exosuit-telemetry-hud" aria-hidden="true">
+            <div class="suit-status-pill">
+              <span class="suit-status-dot"></span>
+              <span id="suit-stage-indicator">01 // NEUTRAL UNDERSUIT</span>
+            </div>
+            <div id="suit-progress-bar-container">
+              <div id="suit-progress-fill"></div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Integrated Mechanical Hotspot Pills -->
-      <div class="hotspot-node-group interactive-layer" role="group" aria-label="Interactive machine components">
+      <!-- Integrated Exosuit Mechanical Hotspot Pills -->
+      <div class="hotspot-node-group interactive-layer" role="group" aria-label="Interactive suit systems">
         <button type="button" class="hotspot-pill" aria-expanded="false" aria-controls="hotspot-info-1">
           <span class="hotspot-indicator-dot"></span>
-          <span>Optical Quantum Core</span>
+          <span>Chest Arc Reactor</span>
         </button>
         <button type="button" class="hotspot-pill" aria-expanded="false" aria-controls="hotspot-info-2">
           <span class="hotspot-indicator-dot"></span>
-          <span>6-DOF Articulated Arms</span>
+          <span>Articulated Titanium Joints</span>
         </button>
         <button type="button" class="hotspot-pill" aria-expanded="false" aria-controls="hotspot-info-3">
           <span class="hotspot-indicator-dot"></span>
-          <span>Neural Power Chassis</span>
+          <span>Motorized Gold Faceplate</span>
+        </button>
+        <button type="button" class="hotspot-pill" aria-expanded="false" aria-controls="hotspot-info-4">
+          <span class="hotspot-indicator-dot"></span>
+          <span>Palm Repulsor Emitters</span>
         </button>
       </div>
     </section>

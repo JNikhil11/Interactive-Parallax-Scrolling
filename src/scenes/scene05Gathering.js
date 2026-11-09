@@ -24,7 +24,7 @@ export function initScene05() {
       trigger: '#scene-gathering',
       start: 'top bottom',
       end: 'bottom top',
-      scrub: 0.7,
+      scrub: true, // Immediate direct scroll synchronization
     },
   });
 
@@ -37,12 +37,12 @@ export function initScene05() {
       .to(beams[3], { rotation: -14, ease: 'none' }, 0);
   }
 
-  // Staggered reveals for pillars
+  // Reveals for pillars
   if (pillars.length >= 4) {
     timeline.fromTo(
       pillars,
-      { y: 50, opacity: 0.5 },
-      { y: 0, opacity: 1, stagger: 0.08, ease: 'power1.out' },
+      { y: 35, opacity: 0.6 },
+      { y: 0, opacity: 1, stagger: 0.05, ease: 'power1.out' },
       0.1
     );
   }

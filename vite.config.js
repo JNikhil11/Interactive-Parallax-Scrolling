@@ -9,14 +9,15 @@ export default defineConfig({
     emptyOutDir: true,
     assetsDir: 'assets',
     sourcemap: true,
+    chunkSizeWarningLimit: 700,
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
       },
       output: {
         manualChunks: {
+          three: ['three'],
           gsap: ['gsap', 'gsap/ScrollTrigger'],
-          lenis: ['lenis'],
         },
       },
     },
